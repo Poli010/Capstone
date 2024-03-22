@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2024 at 01:00 PM
+-- Generation Time: Mar 22, 2024 at 07:13 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,29 @@ CREATE TABLE `accounts` (
   `verification_code` varchar(255) NOT NULL,
   `verification_complete` varchar(255) NOT NULL,
   `user_id` varchar(255) NOT NULL,
-  `approved` varchar(255) NOT NULL
+  `approved` varchar(255) NOT NULL,
+  `profile_picture` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointment_list`
+--
+
+CREATE TABLE `appointment_list` (
+  `id` int(11) NOT NULL,
+  `endUser_email` varchar(255) NOT NULL,
+  `endUser_name` varchar(255) NOT NULL,
+  `endUser_message` varchar(255) NOT NULL,
+  `technician_email` varchar(255) NOT NULL,
+  `technician_name` varchar(255) NOT NULL,
+  `technician_message` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `time` varchar(255) NOT NULL,
+  `technician_contact` bigint(255) NOT NULL,
+  `technician_social` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -66,8 +88,11 @@ CREATE TABLE `technician_form` (
   `valid_id` varchar(255) NOT NULL,
   `business_permit` varchar(255) NOT NULL,
   `curriculum_vitae` varchar(255) NOT NULL,
-  `service_descrtiption` text NOT NULL,
-  `user_id` varchar(255) NOT NULL
+  `service_description` text NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `approved` varchar(255) NOT NULL,
+  `time_availability` varchar(255) NOT NULL,
+  `ratings` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -78,6 +103,12 @@ CREATE TABLE `technician_form` (
 -- Indexes for table `accounts`
 --
 ALTER TABLE `accounts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `appointment_list`
+--
+ALTER TABLE `appointment_list`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -94,13 +125,19 @@ ALTER TABLE `technician_form`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `appointment_list`
+--
+ALTER TABLE `appointment_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `technician_form`
 --
 ALTER TABLE `technician_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
