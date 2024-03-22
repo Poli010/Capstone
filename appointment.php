@@ -62,7 +62,7 @@
         <div class="modal_button">
             <form action="appointment_cancelBook.php" method="post">
                 <button class="btnYes" name="submit" onclick="delete_book()">Yes</button>
-                <button class="btnNo" onclick="close_modal()">No</button>
+                <button class="btnNo" type="button" onclick="close_modal()">No</button>
                 <input type="hidden" name="techa" id="techa" value="">
                 <input type="hidden" name="endUser_email" id="endUser_email" value="">
             </form>
