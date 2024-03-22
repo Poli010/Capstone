@@ -32,7 +32,8 @@
                 <input type="submit" class="form_button" name="submit">
             </form>
             <button class="submit" onclick="submit()">Submit</button>
-            <button class="resend" onclick="newverification()">Resend Code?</button>
+            <button class="resend" id="resend" onclick="newverification()">Resend Code?</button>
+            <p class="sending" id="sending">Sending...</p>
             <div class="timer" id="timer">30s</div>
         </div>
     </div>

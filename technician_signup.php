@@ -61,11 +61,11 @@
 
         if(move_uploaded_file($_FILES['profile']["tmp_name"],$profile_img) && move_uploaded_file($_FILES['valid']["tmp_name"],$valid_id) && move_uploaded_file($_FILES['business_permit']["tmp_name"],$business_permit) && move_uploaded_file($_FILES['resume']["tmp_name"],$curriculum_vitae)){
             
-            $signup = "INSERT INTO technician_form VALUES ('','$technician_position','$firstname','$lastname','$address','$baranggay','$province','$birthday','$contact_number','$social','$email','$username','$password','$profile_img','$valid_id','$business_permit','$curriculum_vitae','$service_description','$user_id')";
+            $signup = "INSERT INTO technician_form VALUES ('','$technician_position','$firstname','$lastname','$address','$baranggay','$province','$birthday','$contact_number','$social','$email','$username','$password','$profile_img','$valid_id','$business_permit','$curriculum_vitae','$service_description','$user_id','','','')";
             $query = mysqli_query($conn, $signup);
 
             if($query){
-                $accounts = "INSERT INTO accounts VALUES ('','$technician','$firstname','$lastname','$email','$username','$contact_number','$password','$verification','','$user_id','')";
+                $accounts = "INSERT INTO accounts VALUES ('','$technician','$firstname','$lastname','$email','$username','$contact_number','$password','$verification','','$user_id','','$profile_img')";
                 $query2 = mysqli_query($conn, $accounts);
                 
             }

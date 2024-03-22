@@ -17,6 +17,7 @@ var timerInterval = setInterval(() => {
 //FUNCTION FOR RESEND CODE
 function newverification(){
     var email = document.getElementById("email").value;
+    var sending = document.getElementById("sending");
     $.ajax({
         url: 'resend_code.php',
         type: 'POST',
@@ -28,6 +29,9 @@ function newverification(){
             location.reload();
         },
     });
+    resend.style.visibility='hidden';
+    sending.style.visibility='visible';
+ 
 }
 
 

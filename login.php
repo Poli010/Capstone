@@ -17,7 +17,7 @@
         if($account_type == 'end_user' || $account_type == 'admin' || $account_type == 'technician'){
             if($verification_code == $verification_complete){
                 if($account_type == 'end_user'){
-                    header("Location: end_user.php");
+                    header("Location: endUser_page.php?email=$email");
                 }
                 else if($account_type == 'admin'){
                     header("Location: admin.php");
@@ -28,21 +28,21 @@
                     }
                     else{
                         echo '<script>
-                                    window.location.href="index.php?error=1";
+                                    window.location.href="login_page.php?error=1";
                             </script>';
                     }
                 }
             }
             else{
                 echo '<script>
-                            window.location.href = "index.php?error=2";
+                            window.location.href = "login_page.php?error=2";
                     </script>';
                   
             }
         }
         else{
             echo '<script>
-                        window.location.href="index.php?error=3";
+                        window.location.href="login_page.php?error=3";
                 </script>';
         }
     }

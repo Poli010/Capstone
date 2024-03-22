@@ -83,6 +83,16 @@ body {
     color: darkgrey;
 }
 
+.sending{
+    position: absolute;
+    color: wheat;
+    font-size: 15px;
+    text-align: center;
+    margin-left: 210px;
+    margin-top: 5px;
+    visibility: hidden;
+}
+
 .form_button{
     display: none;
 }

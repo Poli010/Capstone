@@ -58,29 +58,28 @@
                     <label for="confirm_password">Confirm Password:</label>
                     <input type="password" name="confirm_password" id="confirm_password" class="confirm_password" autocomplete="off" required>
                 </div>
-                
                 <div class="photos">
                     <div class="profile_photo">
                         <label for="">Profile Picture: </label>
-                        <input type="file" name="profile" id="profile_input" autocomplete="off" requiredrequired>
+                        <input type="file" name="profile" id="profile_input" autocomplete="off" required>
                         <label for="profile_input" class="profile"><i class="fa-solid fa-image"></i> Upload Profile</label>
                     </div>
 
                     <div class="valid_id">
                         <label for="">Valid ID:</label>
-                        <input type="file" name="valid" id="valid" autocomplete="off" requiredrequired>
+                        <input type="file" name="valid" id="valid" autocomplete="off" required>
                         <label for="valid" class="ID"><i class="fa-solid fa-id-card"></i> Upload Valid ID</label>
                     </div>
                     
                     <div class="business_permit">
                         <label for="">Business Permit:</label>
-                        <input type="file" name="business_permit" id="business_permit" autocomplete="off" requiredrequired>
+                        <input type="file" name="business_permit" id="business_permit" autocomplete="off" required>
                         <label for="business_permit" class="business"><i class="fa-solid fa-paperclip"></i> Upload Business Permit</label>
                     </div>
 
                     <div class="curriculum_vitae">
                         <label for="">Curriculum Vitae:</label>
-                        <input type="file" name="resume" id="resume" autocomplete="off" requiredrequired>
+                        <input type="file" name="resume" id="resume" autocomplete="off" required>
                         <label for="resume" class="upload_cv"><i class="fa-regular fa-file"></i> Upload CV</label>
                     </div>
                 </div>
