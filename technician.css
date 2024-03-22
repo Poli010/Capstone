@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(46, 40, 40);
+    font-family: Poppins, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 100vh;
+}
+.container{
+    margin-top: 10px;
+    background: rgb(83, 81, 81);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 1200px;
+    height: 680px;
+}
+
+.title{
+    text-align: center;
+}
+
+.application_form{
+    margin-top: 50px;
+}
+
+.name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.name input{
+    margin-left: 5px;
+    margin-right: 50px;
+    width: 170px;
+    height: 25px;
+    border: 1px solid black;
+    color: white;
+    border-radius: 5px;
+    background: rgb(124, 111, 111);
+}
+
+.name select{
+    margin-left: 10px;
+    margin-right: 50px;
+    color: white;
+    width: 170px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: rgb(124, 111, 111);
+    cursor: pointer;
+}
+
+.address{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.address input{
+    margin-left: 10px;
+    margin-right: 50px;
+    width: 170px;
+    height: 25px;
+    border: 1px solid black;
+    color: white;
+    border-radius: 5px;
+    background: rgb(124, 111, 111);
+}
+
+.social_resume{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.social_resume input{
+    margin-left: 5px;
+    margin-right: 20px;
+    width: 170px;
+    height: 25px;
+    border: 1px solid black;
+    color: white;
+    border-radius: 5px;
+    background: rgb(124, 111, 111);
+}
+
+.accounts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.accounts input{
+    margin-left: 5px;
+    margin-right: 10px;
+    width: 170px;
+    height: 25px;
+    border: 1px solid black;
+    color: white;
+    border-radius: 5px;
+    background: rgb(124, 111, 111);
+}
+
+.photos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#profile_input[type="file"]{
+    display: none;
+}
+
+.profile{
+    padding: 5px 10px 5px 10px;
+    background: rgb(124, 111, 111);
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+.profile:hover{
+    background: rgb(80, 72, 72);
+}
+
+#valid[type="file"]{
+    display: none;
+}
+
+.ID{
+    padding: 5px 10px 5px 10px;
+    background: rgb(124, 111, 111);
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.ID:hover{
+    background: rgb(80, 72, 72);
+}
+
+
+#business_permit[type="file"]{
+    display: none;
+}
+
+.business{
+    padding: 5px 10px 5px 10px;
+    background: rgb(124, 111, 111);
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+.business:hover{
+    background: rgb(80, 72, 72);
+}
+
+.chosen_files{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+
+
+#resume{
+    display: none;
+}
+
+.upload_cv{
+    padding: 5px 10px 5px 10px;
+    background: rgb(124, 111, 111);
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.upload_cv:hover{
+    background: rgb(80, 72, 72);
+}
+
+.services{
+    position: relative;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.services label{
+    margin-left: -850px;
+}
+
+#service{
+    resize: none;
+    width: 1000px;
+    height: 100px;
+    border: 1px solid black;
+    color: white;
+    border-radius: 5px;
+    background: rgb(124, 111, 111);
+}
+
+.account{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.btnsubmit{
+    margin-top: 10px;
+    margin-left: 50%;
+    height: 29px;
+    width: 65px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background: rgb(124, 111, 111);
+    color: white;
+    cursor: pointer;
+}
+
+.btnsubmit:hover{
+    background: rgb(102, 91, 91);
+}
+
+.wrong{
+    position: absolute;
+    background: rgb(82, 72, 72);
+    border: 1px solid black;
+    text-align: center;
+    padding: 35px 30px 35px 30px;
+    border-radius: 10px;
+    transform: translate(0%)scale(0.1);
+    transition: 0.5s;
+    visibility: hidden;
+}
+
+.wrong_pass-open{
+    visibility: visible;
+    transform: translate(0%)scale(1);
+}
+
+.wrong_email-open{
+    visibility: visible;
+    transform: translate(0%)scale(1);
+}
+
+.wrong-empty{
+    visibility: visible;
+    transform: translate(0%)scale(1);
+}
+
+.wrong-contact{
+    visibility: visible;
+    transform: translate(0%)scale(1);
+}
+
+.ok{
+    margin-top: 10px;
+    height: 29px;
+    width: 65px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background: rgb(129, 115, 115);
+    color: white;
+    cursor: pointer 
+}
+
+.ok:hover{
+    background: rgb(102, 91, 91);
+}
+
+.container-main{
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+#upload_form{
+    display: none;
+}
+
+#contact_number::-webkit-inner-spin-button,
+#contact_number::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
