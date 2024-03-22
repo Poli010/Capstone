@@ -33,7 +33,7 @@
                 <h3>Time Availability:</p>
             </div>
         <div class="btn-container">
-            <a href="#" class="btn1">Appointment List</a>
+            <a href="appointment_list.php" class="btn1">Appointment List</a>
             <a href="#" class="btn6">Ongoing</a>
             <a href="#" class="btn2">Succesful Transaction</a>
             <a href="#" class="btn3">Feedback</a>

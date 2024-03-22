@@ -3,9 +3,9 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
-    require 'C:\xampp\htdocs\Capstone\PHPMailer\src\Exception.php';
-    require 'C:\xampp\htdocs\Capstone\PHPMailer\src\PHPMailer.php';
-    require 'C:\xampp\htdocs\Capstone\PHPMailer\src\SMTP.php';
+    require 'D:\xampp\htdocs\Capstone\PHPMailer\src\Exception.php';
+    require 'D:\xampp\htdocs\Capstone\PHPMailer\src\PHPMailer.php';
+    require 'D:\xampp\htdocs\Capstone\PHPMailer\src\SMTP.php';
 
     if(isset($_POST['submit'])){
         $profile_destination =  "profile_picture/";
