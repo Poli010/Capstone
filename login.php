@@ -24,7 +24,7 @@
                 }
                 else if($account_type == 'technician'){
                     if($approved == 'yes'){
-                        header("Location: technician.php");
+                        header("Location: tech_acc.php?email=$email");
                     }
                     else{
                         echo '<script>

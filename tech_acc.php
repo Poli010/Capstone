@@ -1,3 +1,11 @@
+<?php
+    require_once("dbcon.php");
+    $email = $_GET['email'];
+
+    $sql = "SELECT * FROM technician_form WHERE email = '$email'";
+    $query = mysqli_query($conn, $sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
