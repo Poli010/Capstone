@@ -43,23 +43,24 @@ function close_modal(){
 }
 
 //FUNCTION FOR ACCEPT BUTTON
-function accept(endUser_email, endUser_name, technician_email, date, time, appointmentId) {
+function accept(endUser_email, endUser_name, date, time, appointmentId) {
     $.ajax({
         url: "accept_appointment.php",
         type: "POST",
         data: {
             endUser_email: endUser_email,
             endUser_name: endUser_name,
-            technician_email: technician_email, 
             date: date, 
             time: time, 
             appointmentId: appointmentId 
         },
         success: function(response) {
+          
             alert(response); 
             location.reload();
         },
         error: function(xhr, status, error) {
+            
             console.error(xhr.responseText);
             alert("Error accepting appointment. Please try again."); 
         }

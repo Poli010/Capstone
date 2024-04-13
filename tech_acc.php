@@ -5,6 +5,13 @@
     $sql = "SELECT * FROM technician_form WHERE email = '$email'";
     $query = mysqli_query($conn, $sql);
 
+    $row = mysqli_fetch_assoc($query);
+    $firstname = $row['first_name'];
+    $lastname = $row['last_name'];
+    $username = $row['username'];
+    $contact = $row['contact_number'];
+    $address = $row['address'];
+    $time_availability = $row['time_availability'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,17 +39,18 @@
                 <a href="edit_profile.php" class="settings"><i class="fas fa-cog"></i>Account Settings</a>
         </form>
      </div>  
-            <div class="data">
-                <h3>Fullname:</p>
-                <h3>Username: </p>
-                <h3>Email: </p>
-                <h3>Contact#:</p>
-                <h3>Address:</p>
-                <h3>Time Availability:</p>
-            </div>
+        <div class="data">
+            <h3>First Name: <?php echo $firstname; ?></h3>
+            <h3>Last Name: <?php echo $lastname; ?></h3>
+            <h3>Username: <?php echo $username; ?></h3>
+            <h3>Email: <?php echo $email; ?></h3>
+            <h3>Contact#: <?php echo $contact; ?></h3>
+            <h3>Address: <?php echo $address; ?></h3>
+            <h3>Time Availability: <?php echo $time_availability; ?></h3>
+         </div>
         <div class="btn-container">
-            <a href="appointment_list.php" class="btn1">Appointment List</a>
-            <a href="#" class="btn6">Ongoing</a>
+            <a href="appointment_list.php?email=<?php echo urlencode($email); ?>" class="btn1">Appointment List</a>
+            <a href="ongoing_appointment.php?email=<?php echo urlencode($email); ?>" class="btn6">Ongoing</a>
             <a href="#" class="btn2">Succesful Transaction</a>
             <a href="#" class="btn3">Feedback</a>
             <a href="#" class="btn4">Chat</a>

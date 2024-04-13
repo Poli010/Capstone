@@ -2,7 +2,7 @@
     require_once("dbcon.php");
     $email = $_GET['email'];
 
-    $sql = "SELECT * FROM appointment_list WHERE technician_email = '$email'";
+    $sql = "SELECT * FROM ongoing_appointment WHERE technician_email = '$email'";
     $query = mysqli_query($conn, $sql);
 
 ?>
@@ -19,7 +19,7 @@
 </head>
 <body>
     <div class="container" id="container">
-        <h1>Appointment List <i class="fa-solid fa-calendar-check"></i></h1>
+        <h1>Ongoing Appointment <i class="fa-solid fa-calendar-check"></i></h1>
         <div class="header">
             <label for="">Client Name:</label>
             <label for="">Date:</label>
@@ -40,12 +40,11 @@
             <button class="action_btn" onclick="show('message_collapse_<?php echo $row['id']; ?>','icon_<?php echo $row['id']; ?>','<?php echo $row['technician_email'] ?>','<?php echo $email ?>')"><i id="icon_<?php echo $row['id']; ?>" class="fa-solid fa-arrow-down"></i></button>
         </div>
         <div class="message" id="message_collapse_<?php echo $row['id']; ?>">
-            <p><?php echo $row['technician_message'] ?> </p>
-                    <br>
+           
             <div class="contact">
                 <p><i class="fa-solid fa-envelope"></i> <?php echo $row['endUser_email'] ?></p>
                 <button class="chatBtn" onclick="chats('<?php echo $row['endUser_email'] ?>')">Chat</button>
-                <button class="acceptBtn" onclick="accept('<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')">Accept</button>
+                <button class="acceptBtn" onclick="accept('<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')">Done</button>
                 <button class="cancelBtn" onclick="cancelbook()">Cancel Book</button>
                 <input type="hidden" id="technician_email" value="<?php echo $row['technician_email'] ?>">
             </div>
