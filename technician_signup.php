@@ -3,15 +3,9 @@ require_once("dbcon.php");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-<<<<<<< HEAD
-require 'C:\xampp\htdocs\Capstone\PHPMailer\src\Exception.php';
-require 'C:\xampp\htdocs\Capstone\PHPMailer\src\PHPMailer.php';
-require 'C:\xampp\htdocs\Capstone\PHPMailer\src\SMTP.php';
-=======
     require 'D:\xampp\htdocs\Capstone\PHPMailer\src\Exception.php';
     require 'D:\xampp\htdocs\Capstone\PHPMailer\src\PHPMailer.php';
     require 'D:\xampp\htdocs\Capstone\PHPMailer\src\SMTP.php';
->>>>>>> 369247a8b837d68fceee0c8a768e4f6173717464
 
 if(isset($_POST['submit'])){
     $profile_destination =  "profile_picture/";
