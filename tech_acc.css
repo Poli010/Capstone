@@ -7,13 +7,44 @@ body {
     overflow-x: hidden; 
 }
 .container{
-    border: 1px solid black;
+    border: 2px solid black;
     background: rgb(83, 81, 81);
-    height: 700px;
-    width: 850px;
-    margin-top: 150px;
+    height: 600px;
+    max-width: 800px;
+    margin-top: 200px;
+    display: flex;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+.sidebar {
+    width: 100px;
+    padding: 15px;
+    background-color: rgb(46, 40, 40);
+    border-right: 1px solid #ddd;
+}
+.sidebar a i {
+    color: white;
+    font-size: 40px;
+    padding: 20px;
 }
 
+.sidebar a i:hover::after {
+    content: attr(title);
+    position: fixed;
+    top: calc(100% + 10px);
+    left: calc(50% - 50px); 
+    font-size: 15px;
+    padding: 5px 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 999;
+}
 h1{
     text-align: center;
     color: white;
@@ -21,11 +52,13 @@ h1{
 }
 hr{
     border-bottom: 2px solid black;
+    width: 70%
 }
 .info{
-    margin-top: 30px;
-    margin-left: 600px;
+    margin-top: 40px;
+    margin-left: 220px;
     border: 1px solid black;
+    border-radius: 10px;
     width: 200px;
     height: 150px;
 }
@@ -65,159 +98,33 @@ hr{
 #submit{
     font-size: 12px;
 }
-
-.btn-container {
-    font-size: 20px;
-    text-align: center;
-    margin-top: 100px;
-    margin-left: -130px;
-   
-}
-
-.btn1 {
-    position: absolute;
-    text-decoration: none;
-    color: white;
-    border: 1px solid black;
-    padding: 5px;
-    margin-left: -305px;
-    background: rgb(124, 111, 111);
-    cursor: pointer;
-}
-
-.btn1:hover {
-    background: rgb(102, 91, 91);
-    text-decoration: none;
-    color: white;
-}
-
-.btn2{
-    position: absolute;
-    text-decoration: none;
-    color: white;
-    border: 1px solid black;
-    padding: 5px;
-    margin-left: -12px;
-    background: rgb(124, 111, 111);
-    cursor: pointer;
-}
-
-.btn2:hover {
-    background: rgb(102, 91, 91);
-    text-decoration: none;
-    color: white;
-}
-.btn3{
-    position: absolute;
-    text-decoration: none;
-    color: white;
-    border: 1px solid black;
-    padding: 4px;
-    margin-left: 225px;
-    margin-top: 1px;
-    background: rgb(124, 111, 111);
-    cursor: pointer;
-}
-
-.btn3:hover {
-    background: rgb(102, 91, 91);
-    text-decoration: none;
-    color: white;
-}
-
-.btn5{
-    position: absolute;
-    text-decoration: none;
-    color: white;
-    border: 1px solid black;
-    padding: 2px 10px;
-    margin-top: 30px;
-    background: rgb(124, 111, 111);
-    cursor: pointer;
-}
-
-.btn5:hover {
-    background: darkred;
-    text-decoration: none;
-    color: white;
-}
-
-
-.btn4{
-    position: absolute;
-    text-decoration: none;
-    color: white;
-    border: 1px solid black;
-    padding: 2px 15px 5px;
-    margin-left:  340px;
-    margin-top: 1px;
-    background: rgb(124, 111, 111);
-    cursor: pointer;
-}
-
-.btn4:hover {
-    background: rgb(102, 91, 91);
-    text-decoration: none;
-    color: white;
-}
-
-.btn6{
-    position: absolute;
-    text-decoration: none;
-    color: white;
-    border: 1px solid black;
-    padding: 5px;
-    margin-left: -120px;
-    background: rgb(124, 111, 111);
-    cursor: pointer;
-}
-.btn6:hover {
-    background: rgb(102, 91, 91);
-    text-decoration: none;
-    color: white;
-}
 .data {
     color: white;
-    height: 300px;
+    font-size: 10px;
+    margin-left: 60px;
+    margin-top: 40px;
+    height: 250px;
     width: 500px;
-    margin-top: -150px;
     padding: 10px;
     border: 1px solid black;
-    border-radius: 5px;
-    background: rgb(83, 81, 81);
+    border-radius: 25px;
+    background-color: rgb(46, 40, 40);
 }
 
 .data h3 {
     margin: 0;
     padding: 5px;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 20px;
+ 
 }
 
 .data p {
     margin: 0;
     padding: 5px;
-    font-size: 14px;
-}
-
-.settings{
-    position: absolute;
-    text-decoration: none;
-    color: white;
-    border: 1px solid black;
-    padding: 5px;
-    margin-top: 65px;
-    margin-left: -135px;
-    background: rgb(124, 111, 111);
-    cursor: pointer;
-}
-
-.settings:hover {
-    background: rgb(102, 91, 91);
-    text-decoration: none;
-    color: white;
+    font-size: 25px;
 }
 
 hr {
     border-color: white;
 }
+

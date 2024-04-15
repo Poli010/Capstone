@@ -2,9 +2,24 @@
     require_once("dbcon.php");
     $email = $_GET['email'];
 
-    $sql = "SELECT * FROM technician_form WHERE email = '$email'";
+  
+    $sql = "SELECT user_id, first_name, last_name, username, contact_number, address, time_availability FROM technician_form WHERE email = '$email'";
     $query = mysqli_query($conn, $sql);
 
+   
+    if ($query) {
+
+        $row = mysqli_fetch_assoc($query);
+        
+        
+        $user_id = $row['user_id'];
+        $firstname = $row['first_name'];
+        $lastname = $row['last_name'];
+        $username = $row['username'];
+        $contact = $row['contact_number'];
+        $address = $row['address'];
+        $time_availability = $row['time_availability'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,38 +34,39 @@
 </head>
 <body>
 <div class="container">
-        <h1>Technician Account</h1>
-        <hr>
-    <div class="info">
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-          <div class="file-input-container">
-                <input type="file" name="profilePictureInput" id="profilePictureInput">
-          </div>    
-                <br>
-                <label for="profilePictureInput" id="uploadLabel">Choose a file</label>
-                <button type="submit" id="submit">Upload</button>
-                <a href="edit_profile.php" class="settings"><i class="fas fa-cog"></i>Account Settings</a>
-        </form>
-     </div>  
-            <div class="data">
-                <h3>Fullname:</p>
-                <h3>Username: </p>
-                <h3>Email: </p>
-                <h3>Contact#:</p>
-                <h3>Address:</p>
-                <h3>Time Availability:</p>
+        <div class="sidebar">
+       
+        <a href="#"><i class="fas fa-user-circle" title="Profile"></i></a>
+        <a href="appointment_list.php?email=<?php echo urlencode($email); ?>"><i class="fas fa-calendar-alt fa-lg" title="Appointment Lists"></i></a>
+    <a href="ongoing_appointment.php?email=<?php echo urlencode($email); ?>"><i class="fas fa-clock fa-lg" title="Ongoing Appointments"></i></a>
+            <a href="complete_transactions.php?email=<?php echo urlencode($email); ?>"><i class="fas fa-check-circle"title="Successful Transactions"></i></a>
+            <a href="#"><i class="fas fa-comments" title="Feedbacks"></i></a>
+            <a href="technician_profile_edit.php?user_id=<?php echo $user_id; ?>"><i class="fas fa-cog" title="Account Settings"></i></a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"title="Logout"></i></a>
+        </div>
+        <div class="main-content">
+            <h1>Technician Account</h1>
+            <hr>
+            <div class="info">
+                <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <div class="file-input-container">
+                        <input type="file" name="profilePictureInput" id="profilePictureInput">
+                    </div>
+                    <br>
+                    <label for="profilePictureInput" id="uploadLabel">Choose a file</label>
+                    <button type="submit" id="submit">Upload</button>
+                </form>
             </div>
-        <div class="btn-container">
-            <a href="#" class="btn1">Appointment List</a>
-            <a href="#" class="btn6">Ongoing</a>
-            <a href="#" class="btn2">Succesful Transaction</a>
-            <a href="#" class="btn3">Feedback</a>
-            <a href="#" class="btn4">Chat</a>
-            <br>
-            <a href="logout.php" class="btn5">LOGOUT</a>
-         </div>
+            <div class="data">
+            <h3><?php echo $firstname . " " . $lastname; ?></h3>
+                <h3>Username: <?php echo $username; ?></h3>
+                <h3>Email: <?php echo $email; ?></h3>
+                <h3>Contact Number: <?php echo $contact; ?></h3>
+                <h3>Address: <?php echo $address; ?></h3>
+                <h3>Time Availability: <?php echo $time_availability; ?></h3>
+            </div>
+        </div>
     </div>
-
-    </div>
-    </body>
-    </html>
+    <script src="tech_acc.js"></script>
+</body>
+</html>
