@@ -1,3 +1,10 @@
+<?php
+    require_once("dbcon.php");
+    $sql = "SELECT * FROM technician_form WHERE approved = ''";
+    $query = mysqli_query($conn, $sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +14,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="pending_applicants.css">
     <title>Pending Applicants</title>
+    <link rel="website icon" href="icon/icon.png" type="png">
 </head>
 <body>
 
@@ -22,7 +30,7 @@
                 <li class="nav-item"><a class="nav-link" href="pending_applicants.php" style="color: white;">Pending Applicants</a></li>
                 <li class="nav-item"><a class="nav-link" href="pending_appointments.php" style="color: white;">Pending Appointments</a></a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact" style="color: white;">Successful Transactions</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" style="color: white;">Logout</a></li>
+                <li class="nav-item"><a class="nav-link" href="login_page.php" style="color: white;">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -31,8 +39,21 @@
         <table class="table" border="2">
             <tr>
                 <th>Name</th>
+                <th>Applying Position</th>
                 <th>View</th>
             </tr>
+            <?php
+            while($row = mysqli_fetch_assoc($query)){
+            ?>
+            <tr>
+                <td class="name"><?php echo $row['first_name'] ?>  <?php echo $row['middle_name'] ?>  <?php echo $row['last_name'] ?></td>
+                <td><?php echo $row['position'] ?></td>
+                <td><Button class="btn-primary" onclick="view('<?php echo $row['email'] ?>')">View</Button></td>
+            </tr>   
+
+            <?php
+            }   
+            ?>
             
       </div>
 
@@ -41,7 +62,7 @@
 
 
 
-
+    <script src="pending_applicants.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

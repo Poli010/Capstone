@@ -60,7 +60,7 @@ body::-webkit-scrollbar {
 
 .filter_card{
     display: flex;
-    margin-top: -74px;
+    margin-top: -73px;
 }
 
 .filter{
@@ -68,14 +68,17 @@ body::-webkit-scrollbar {
     width: 250px;
 }
 
-#baranggay{
+#barangay{
     width: 110px;
     background: rgb(124, 111, 111);
     cursor: pointer;
     color: white;
     border: 1px solid black;
     border-radius: 5px;
+    margin-left: 10px;
 }
+
+
 
 #province{
     width: 110px;
@@ -107,6 +110,7 @@ body::-webkit-scrollbar {
     text-align: center;
     background: rgb(82, 72, 72);
     text-transform: capitalize;
+    overflow: hidden;
 }
 
 .card label{
@@ -163,11 +167,6 @@ body::-webkit-scrollbar {
 
 .technician-container::-webkit-scrollbar-track {
     background: rgb(102, 91, 91);
-}
-
-.loc{
-    display: flex;
-    justify-content: center;
 }
 
 .profile_modal {
@@ -274,7 +273,7 @@ body::-webkit-scrollbar {
     margin-left: 96%;
     font-size: 25px;
     cursor: pointer;
-    animation: shake 2s ease-in-out infinite;;
+    animation: shake 2s ease-in-out infinite;
 }
 
 .close_book:hover{
@@ -292,7 +291,7 @@ body::-webkit-scrollbar {
 }
 
 .descriptions{
-    height: 100px; 
+    height: 70px; 
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-base-color: black;
@@ -396,6 +395,7 @@ body::-webkit-scrollbar {
     border-radius: 5px;
     width: 90%;
     height: 70px;
+    color: white;
 }
 
 .footer{
@@ -482,8 +482,8 @@ body::-webkit-scrollbar {
     left: 50%; 
     transform: translateX(-50%)scale(0.1); 
     text-align: center;
-    margin-top: 400px; 
-    height: 170px;
+    margin-top: 250px; 
+    height: 300px;
     background: rgb(102, 91, 91);
     width: 600px;
     z-index: 999;
@@ -503,6 +503,49 @@ body::-webkit-scrollbar {
 }
 
 .close{
+    position: fixed;
+    top: 0;
+    right: 10px;
+    font-size: 25px;
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.close:hover{
+    color: black;
+}
+
+.container-open{
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+.seeLocation{
+    background: rgb(146, 146, 247);
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.seeLocation:hover{
+    background: rgb(97, 97, 199);
+}
+
+.info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.appoint_now{
     margin-top: 10px;
     height: 29px;
     width: 70px;
@@ -514,11 +557,199 @@ body::-webkit-scrollbar {
     transition: 0.5s;
 }
 
-.close:hover{
+.appoint_now:hover{
     background: rgb(102, 91, 91);
 }
 
-.container-open{
-    filter: blur(10px);
-    pointer-events: none;
+.date{
+    margin-top: 10px;
+    margin-left: -20px;
+}
+
+#date{
+    margin-left: 10px;
+    width: 150px;
+    border-radius: 5px;
+    background: rgb(124, 111, 111);
+    border: 1px solid black;
+    color: white;
+}
+
+#date:focus{
+    border: 1px solid white;
+    outline: none;
+}
+
+.time{
+    margin-top: 10px;
+    margin-left: -20px;
+}
+
+#time{
+    margin-left: 10px;
+    width: 150px;
+    border-radius: 5px;
+    background: rgb(124, 111, 111);
+    border: 1px solid black;
+    color: white;
+}
+
+#time:focus{
+    border: 1px solid white;
+    outline: none;
+}
+
+.service{
+    margin-left: -20px;
+}
+.service label{
+    position: fixed;
+    top: 140px;
+    right: 370px;
+    
+}
+#ipapagawa{
+    height: 100px;
+    width: 200px;
+    resize: none;
+    border-radius: 5px;
+    background: rgb(124, 111, 111);
+    border: 1px solid black;
+    color: white;
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+#ipapagawa:focus{
+    border: 1px solid white;
+    outline: none;
+}
+
+#date:focus{
+    border: 1px solid white;
+    outline: none;
+}
+
+.future_date{
+    position: fixed;
+    top: 0;
+    left: 50%; 
+    transform: translateX(-50%)scale(0.1); 
+    text-align: center;
+    margin-top: 300px; 
+    height: 150px;
+    background: rgb(102, 91, 91);
+    width: 600px;
+    z-index: 999;
+    border: 1px solid black;
+    border-radius: 10px;
+    visibility: hidden;
+    transition: 0.5s;
+}
+.future_date-open{
+    transform: translateX(-50%)scale(1); 
+    visibility: visible;
+}
+
+.future_date_info{
+    margin-top: 10px;
+}
+
+.ok{
+    margin-top: 10px;
+    height: 29px;
+    width: 65px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background: rgb(129, 115, 115);
+    color: white;
+    cursor: pointer 
+}
+
+.ok:hover{
+    background: rgb(102, 91, 91);
+}
+
+#submit{
+    display: none;
+}
+
+.fully_book{
+    position: fixed;
+    top: 0;
+    left: 50%; 
+    transform: translateX(-50%)scale(0.1); 
+    text-align: center;
+    margin-top: 300px; 
+    height: 150px;
+    background: rgb(102, 91, 91);
+    width: 600px;
+    z-index: 999;
+    border: 1px solid black;
+    border-radius: 10px;
+    visibility: hidden;
+    transition: 0.5s;
+}
+
+.fully_book-open{
+    transform: translateX(-50%)scale(1); 
+    visibility: visible;
+}
+
+.fully_book_info{
+    margin-top: 10px;
+}
+
+.success_book{
+    position: fixed;
+    top: 0;
+    left: 50%; 
+    transform: translateX(-50%)scale(0.1); 
+    text-align: center;
+    margin-top: 300px; 
+    height: 150px;
+    background: rgb(102, 91, 91);
+    width: 600px;
+    z-index: 999;
+    border: 1px solid black;
+    border-radius: 10px;
+    visibility: hidden;
+    transition: 0.5s;
+}
+
+.success_book-open{
+    transform: translateX(-50%)scale(1); 
+    visibility: visible;
+}
+
+.fill_service{
+    position: fixed;
+    top: 0;
+    left: 50%; 
+    transform: translateX(-50%)scale(0.1); 
+    text-align: center;
+    margin-top: 300px; 
+    height: 150px;
+    background: rgb(102, 91, 91);
+    width: 500px;
+    z-index: 999;
+    border: 1px solid black;
+    border-radius: 10px;
+    visibility: hidden;
+    transition: 0.5s;
+}
+
+.fill_service_info{
+    margin-top: 10px;
+}
+
+.fill_service-open{
+    transform: translateX(-50%)scale(1); 
+    visibility: visible;
+}
+
+.usename_ratings{
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
 }

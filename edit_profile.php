@@ -50,7 +50,7 @@
                     </div>
                     <div class="uploadbtn">
                         <label for="input"><i class="fa-solid fa-upload"></i> Upload Picture</label>
-                        <input type="file" id="input" name="input"> 
+                        <input type="file" id="input" name="input" accept="image/png, image/jpeg, image/gif, image/webp, image/svg"> 
                     </div>
                 </div>
             </div>

@@ -51,7 +51,7 @@ body {
 
 .table-container {
     position: fixed;
-    margin-top: 500px;
+    top: 420px;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow-y: scroll;
@@ -86,4 +86,74 @@ body {
 
 .table tbody {
     overflow-x: hidden;
+}
+
+table tr td{
+    text-transform: capitalize;
+}
+
+.email{
+    text-transform: lowercase;
+}
+
+.remove_modal {
+    position: fixed;
+    z-index: 999;
+    background: rgb(82, 72, 72);
+    color: white;
+    border: 1px solid black;
+    height: 200px;
+    width: 1000px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)scale(0.1);
+    border-radius: 10px;
+    visibility: hidden; 
+    transition: 0.5s;
+}
+
+
+.remove_modal-open{
+    transform: translate(-50%, -50%)scale(1);
+    visibility: visible;
+}
+
+.modal_info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btnYes{
+    border: 1px solid black;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.btnYes:hover{
+    border: 1px solid black;
+}
+
+.btnNo{
+    border: 1px solid black;
+    width: 100px;
+    border-radius: 10px;
+    background: gray;
+    color: white;
+}
+
+.btnNo:hover{
+    background: rgb(75, 74, 74);
+}
+
+.table-container-open{
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+.button{
+    text-align: center;
 }

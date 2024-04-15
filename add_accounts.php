@@ -18,8 +18,9 @@
         $verification = mt_rand(100000, 999999);
         $user_id = uniqid("userID-");
         $default_picture = 'icon/icon.png';
+        $approved = 'yes';
 
-        $sql = "INSERT INTO accounts VALUES('','$account_type','$first_name','$last_name','$email','$username','$contact_number','$password','$verification','','$user_id','','$default_picture')";
+        $sql = "INSERT INTO accounts VALUES('','$account_type','$first_name','$last_name','$email','$username','$contact_number',md5('$password'),'$verification','','$user_id','$approved','$default_picture')";
         $query = mysqli_query($conn, $sql);
 
         if($query){

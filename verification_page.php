@@ -54,7 +54,7 @@
     <div class="success_technician" id="technician_modal">
         <div class="success_done">
             <h1>Account Successfully Created</h1>
-            <p>Your registration is pending admin approval. You will receive an email notification once your account has been approved.</p>
+            <p>Your registration is pending. You will receive an email notification once your account has been approved.</p>
             <button class="ok" onclick="remove_success()">OK</button>
         </div>
     </div>

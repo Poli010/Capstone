@@ -180,7 +180,7 @@ body {
 
 .account-signup input{
     height: 35px;
-    width: 220px;
+    width: 250px;
     outline: none;
     padding: 0 10px;
     background: transparent;
@@ -428,4 +428,25 @@ form {
     border-radius: 5px;
     display: none;
     font-weight: bold;
+}
+
+.already_account{
+    position: absolute;
+    text-align: center;
+    width: 500px;
+    height: 130px;
+    background: rgb(82, 72, 72);
+    border: 1px solid black;
+    border-radius: 5px;
+    z-index: 999;
+    left: 50%;
+    color: white;
+    visibility: hidden;
+    transform: translate(-50%)scale(0.1);
+    transition: 0.5s;
+}
+
+.already_account-open{
+    transform: translate(-50%)scale(1);
+    visibility: visible;
 }

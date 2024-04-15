@@ -47,7 +47,7 @@
                 <input type="hidden" name="account_type" value="end_user">
                 <div class="account-signup">
                     <input type="text" name="email" id="email" autocomplete="off" required>
-                    <label for="email">Email</label>
+                    <label for="email">Email(example@gmail.com)</label>
                 </div>
 
                 <div class="account-signup">
@@ -67,7 +67,7 @@
 
                 <div class="account-signup">
                     <input type="text" name="contact_number" autocomplete="off" id="contact_number" required >
-                    <label for="contact_number">Contact Number</label>
+                    <label for="contact_number">Contact Number(09----)</label>
                 </div>
 
                 <div class="account-signup">
@@ -118,6 +118,12 @@
         <h1>Invalid Contact Number</h1>
         <p>Please enter a contact number that has 11 digits</p>
         <button class = "ok" onclick = "contact_close()">OK</button>
+    </div>
+
+    <div class="already_account" id="already_account">
+        <h1>Already Have Account!</h1>
+        <p>The email you enter is already exist</p>
+        <button class = "ok" onclick = "already_close()">OK</button>
     </div>
 
 

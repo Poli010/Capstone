@@ -5,6 +5,14 @@
     $sql = "SELECT * FROM appointment_list WHERE endUser_email = '$email'";
     $query = mysqli_query($conn, $sql);
 
+    if($query){
+        $select = "SELECT * FROM appointment_list WHERE endUser_email = '$email'";
+        $select_query = mysqli_query($conn, $select);
+
+        $row2 = mysqli_fetch_assoc($select_query);
+    }
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +43,7 @@
 
             <p><?php echo $row['technician_name'] ?></p>
             <p><?php echo date("F j, Y", strtotime($row['date'])); ?></p>
-            <p><?php echo $row['time'] ?> </p>
+            <p><?php echo date('h:i A', strtotime($row['time'])); ?></p>
             <p><?php echo $row['status'] ?></p>
             <button class="action_btn" onclick="show('message_collapse_<?php echo $row['id']; ?>','icon_<?php echo $row['id']; ?>','<?php echo $row['technician_email'] ?>','<?php echo $email ?>')"><i id="icon_<?php echo $row['id']; ?>" class="fa-solid fa-arrow-down"></i></button>
         </div>
@@ -46,7 +54,7 @@
                 <p><i class="fa-solid fa-phone"></i> +63<?php echo $row['technician_contact'] ?></p>
                 <p><i class="fa-solid fa-envelope"></i> <?php echo $row['technician_email'] ?></p>
                 <a href="<?php echo $row['technician_social'] ?>">Social Media Link Here</a>
-                <button class="chatBtn" onclick="chats('<?php echo $row['endUser_email'] ?>')">Chats</button>
+                <!------<button class="chatBtn" onclick="chats('<?php echo $row['endUser_email'] ?>')">Chats</button>------->
                 <button class="cancelBtn" onclick="cancelbook()">Cancel Book</button>
                 <input type="hidden" id="technician_email" value="<?php echo $row['technician_email'] ?>">
             </div>
@@ -60,11 +68,20 @@
     <div class="cancel_modal" id="cancel_modal">
         <h1>Are you sure you want to cancel your book?</h1>
         <div class="modal_button">
+            <button type="button" class="btnYes" onclick="delete_book()">Yes</button>
+            <button class="btnNo" type="button" onclick="close_modal()">No</button>
+        </div>
+    </div>
+    <div class="reason" id="reason">
+        <div class="reason_info">
+            <h1>Reason why you cancel your book?</h1>
             <form action="appointment_cancelBook.php" method="post">
-                <button class="btnYes" name="submit" onclick="delete_book()">Yes</button>
-                <button class="btnNo" type="button" onclick="close_modal()">No</button>
                 <input type="hidden" name="techa" id="techa" value="">
-                <input type="hidden" name="endUser_email" id="endUser_email" value="">
+                <input type="hidden" name="endUser_email" id="endUser_email" value="<?php echo $email ?>">
+                <input type="hidden" name="endUser_name" value="<?php echo $row2['endUser_name'] ?>">
+                <textarea name="reason_cancel" id="" cols="30" rows="10"></textarea><br>
+                <button type="submit" name="submit" class="cancel">Cancel Book</button>
+                <button type="button" class="close" onclick="close_reason()">Close</button>
             </form>
         </div>
     </div>

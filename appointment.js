@@ -17,16 +17,14 @@ function show(id, iconId,technician_email,email){
         },
         success: function(response){
             techa.value = response.data.technician_email;
-            endUser_email.value = response.data.endUser_email;
-           
         }
     })
 }
 
 //FUNCTION FOR CHAT BUTTON
-function chats(endUser_email){
-    window.location.href = "chats.php?email=" + endUser_email;
-}
+// function chats(endUser_email){
+//     window.location.href = "chats.php?email=" + endUser_email;
+// }
 
 //FUNCTION FOR CANCEL BOOK BUTTON
 function cancelbook(){
@@ -42,3 +40,15 @@ function close_modal(){
     cancel_modal.classList.remove("cancel_modal-open");
 }
 
+function delete_book(){
+    var reason = document.getElementById("reason");
+
+    reason.classList.add("reason-open");
+    cancel_modal.classList.remove("cancel_modal-open");
+
+}
+
+function close_reason(){
+    reason.classList.remove("reason-open");
+    container.classList.remove("container-open");
+}

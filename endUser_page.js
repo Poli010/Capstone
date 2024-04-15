@@ -42,7 +42,7 @@ document.getElementById("searchbar").addEventListener("input", searchCard);
 function filter() {
     let electrician = document.getElementById("electrician").checked;
     let computer_technician = document.getElementById("computer_technician").checked;
-    let baranggay = document.getElementById("baranggay").value.toLowerCase();
+    let barangay = document.getElementById("barangay").value.toLowerCase();
     let province = document.getElementById("province").value.toLowerCase();
     let cards = document.querySelectorAll(".card");
 
@@ -51,10 +51,10 @@ function filter() {
         let location_brgy = card.querySelector("#loc_brgy").textContent.trim().toLowerCase();
         let location_province = card.querySelector("#loc_province").textContent.replace(/^,|,$/g, '').trim().toLowerCase();
 
-        if (((position === "Electrician" && electrician) || (position === "Computer Technician" && computer_technician)) && ((baranggay === '' || baranggay === location_brgy) && (province === '' || province === location_province))) {
+        if (((position === "Electrician" && electrician) || (position === "Computer Technician" && computer_technician)) && ((barangay === '' || barangay === location_brgy) && (province === '' || province === location_province))) {
             card.style.display = "block";
         } else if (!electrician && !computer_technician &&
-            ((baranggay === '' || baranggay === location_brgy) && (province === '' || province === location_province))) {
+            ((barangay === '' || barangay === location_brgy) && (province === '' || province === location_province))) {
             card.style.display = "block";
         } else {
             card.style.display = "none";
@@ -64,7 +64,7 @@ function filter() {
 
 document.getElementById("electrician").addEventListener("change", filter);
 document.getElementById("computer_technician").addEventListener("change", filter);
-document.getElementById("baranggay").addEventListener("change", filter);
+document.getElementById("barangay").addEventListener("change", filter);
 document.getElementById("province").addEventListener("change", filter);
 
 
@@ -94,6 +94,10 @@ function book(user_id){
     let technician_name = document.getElementById('technician_name');
     let technician_contact = document.getElementById('technician_contact');
     let technician_social = document.getElementById('technician_social');
+    let technician_location = document.getElementById('technician_location');
+    
+
+
 
     $.ajax({
         url: "book_now.php",
@@ -106,14 +110,16 @@ function book(user_id){
             firstname.textContent = response.data.first_name + ' ' +  response.data.last_name;
             book_profile.src = response.data.profile_picture;
             technician_position.textContent = response.data.position;
-            location.textContent = response.data.baranggay + ', ' + response.data.province;
+            location.textContent = response.data.barangay + ', ' + response.data.province;
             description.textContent = response.data.service_description;
             tech.value = response.data.email;
             time_available.textContent = 'Time Available:'+ ' '+ response.data.time_availability;
             technician_name.value = response.data.first_name + ' ' +  response.data.last_name;
             technician_contact.value = +'0' + response.data.contact_number
             technician_social.value = response.data.social_media
+            technician_location.value = response.data.address + ' ' + response.data.barangay + ' ' + response.data.city + ' ' + response.data.province;
             book_now.classList.add("book-now-open");
+            
 
             if(time_available.textContent === 'Time Available: '){
                 time_available.textContent = "Time Available: ---";
@@ -139,68 +145,151 @@ $(function () {
   
 //FUNCTION FOR BOOK NOW
 function booking(){
-    let endUser_email = document.getElementById("endUser_email").value;
-    let endUser_message = document.getElementById("endUser_message").value;
-    let tech = document.getElementById("tech").value;
-    let technician_message = document.getElementById("technician_message").value;
-    var success_modal = document.getElementById("success_modal");
-    var container = document.getElementById("container");
-    let date = document.getElementById('date').value;
-    let time = document.getElementById('time').value;
-    let technician_name = document.getElementById('technician_name').value;
-    let endUser_name = document.getElementById('endUser_name').value;
-    let pending = document.getElementById('pending').value;
-    let technician_contact = document.getElementById('technician_contact').value;
-    let technician_social = document.getElementById('technician_social').value;
+    // let endUser_email = document.getElementById("endUser_email").value;
+    // let endUser_message = document.getElementById("endUser_message").value;
+    // let tech = document.getElementById("tech").value;
+    // let technician_message = document.getElementById("technician_message").value;
+     var success_modal = document.getElementById("success_modal");
+     var container = document.getElementById("container");
+    // let date = document.getElementById('date').value;
+    // let time = document.getElementById('time').value;
+    // let technician_name = document.getElementById('technician_name').value;
+    // let endUser_name = document.getElementById('endUser_name').value;
+    // let pending = document.getElementById('pending').value;
+    // let technician_contact = document.getElementById('technician_contact').value;
+    // let technician_social = document.getElementById('technician_social').value;
 
-    $.ajax({
-        url: "book_appointment.php",
-        type: "POST",
-        dataType: "json",
-        data:{
-            endUser_email: endUser_email,
-            endUser_message: endUser_message,
-            tech: tech,
-            technician_message: technician_message,
-            date: date,
-            time: time,
-            technician_name: technician_name,
-            endUser_name: endUser_name,
-            pending: pending,
-            technician_contact: technician_contact,
-            technician_social: technician_social
-        },
-        success: function(){
-            success_modal.classList.add("success_booking-open");
-            container.classList.add("container-open");
+    // $.ajax({
+    //     url: "book_appointment.php",
+    //     type: "POST",
+    //     dataType: "json",
+    //     data:{
+    //         endUser_email: endUser_email,
+    //         endUser_message: endUser_message,
+    //         tech: tech,
+    //         technician_message: technician_message,
+    //         date: date,
+    //         time: time,
+    //         technician_name: technician_name,
+    //         endUser_name: endUser_name,
+    //         pending: pending,
+    //         technician_contact: technician_contact,
+    //         technician_social: technician_social
+    //     },
+    //     success: function(){
+             success_modal.classList.add("success_booking-open");
+             container.classList.add("container-open");
             
-        }
-    })
+    //     }
+    // })
 }
 
 function close_booking(){
     success_modal.classList.remove("success_booking-open");
     container.classList.remove("container-open");
-    book_now.classList.remove("book-now-open");
 }
 
 
 
 //FUNCTION FOR DATE AND TIME FOR APPOINTMENT
-var now = new Date();
-var year = now.getFullYear();
-var month = now.getMonth() + 1; 
-var day = now.getDate();
+//  var now = new Date();
+//  var year = now.getFullYear();
+//  var month = now.getMonth() + 1; 
+//  var day = now.getDate();
 
-var hours = now.getHours();
-var minutes = now.getMinutes();
-var am_pm = hours < 12 ? 'AM' : 'PM';
-hours = hours % 12;
-hours = hours ? hours : 12;
+//  var hours = now.getHours();
+//  var minutes = now.getMinutes();
+//  var am_pm = hours < 12 ? 'AM' : 'PM';
+//  hours = hours % 12;
+//  hours = hours ? hours : 12;
 
 
 
-var current_date = year + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
-var current_time = (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ' ' + am_pm;
-document.getElementById('date').value = current_date;
-document.getElementById('time').value = current_time;
+// var current_date = year + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
+// var current_time = (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ' ' + am_pm;
+// document.getElementById('date').value = current_date;
+//document.getElementById('time').value = current_time;
+
+
+//FUNCTION FOR SEE THE LOCATION OF TECHNICIAN
+function seeLocation(){
+    let technician_location = document.getElementById("technician_location").value;
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            let currentLatitude = position.coords.latitude;
+            let currentLongitude = position.coords.longitude;
+            let googleMapsUrl = "https://www.google.com/maps/dir/?api=1&origin=" + currentLatitude + "," + currentLongitude + "&destination=" + encodeURIComponent(technician_location);
+
+            window.open(googleMapsUrl, "_blank");
+        });
+    }
+}
+
+
+//CHECK IF THE TECHNICIAN IS ALREADY HAVE 3 APPOINTMENTS
+function appoint(){
+    let date = document.getElementById("date").value;
+    var submit = document.getElementById("submit");
+    var future_date = document.getElementById("future_date");
+    let current_date = document.getElementById("current_date").value;
+    let technician_email = document.getElementById("tech").value;
+    var fully_book = document.getElementById("fully_book");
+    var success_book = document.getElementById("success_book");
+    let endUser_email = document.getElementById("endUser_email").value;
+    let ipapagawa= document.getElementById('ipapagawa').value;
+    var fill_service = document.getElementById('fill_service');
+
+    $.ajax({
+        url: "check_appointment.php",
+        type: "GET",
+        dataType: "json",
+        data:{
+            technician_email: technician_email,
+            endUser_email: endUser_email
+        },
+        success: function(response){
+            if(date === current_date || date <= current_date){
+                future_date.classList.add("future_date-open");
+                success_modal.classList.remove("success_booking-open");
+            } 
+            else if(ipapagawa === ''){
+                fill_service.classList.add("fill_service-open")
+                success_modal.classList.remove("success_booking-open");
+            }
+            else if(response.success){
+                success_book.classList.add("success_book-open");
+                success_modal.classList.remove("success_booking-open")
+            } 
+            else {
+                fully_book.classList.add("fully_book-open");
+                success_modal.classList.remove("success_booking-open");
+            }
+        },
+    });
+    
+
+}
+
+
+function close_future(){
+    future_date.classList.remove("future_date-open");
+    success_modal.classList.add("success_booking-open");
+    fully_book.classList.remove("fully_book-open");
+}
+
+function close_success(){
+    submit.click()
+    success_book.classList.remove("success_book-open");
+  
+}
+
+function close_fill(){
+    fill_service.classList.remove("fill_service-open");
+    success_modal.classList.add("success_booking-open");
+}
+
+
+
+       
+
+

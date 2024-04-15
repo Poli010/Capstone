@@ -5,7 +5,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $sql = "SELECT * FROM accounts WHERE email = '$email' AND password = '$password'";
+        $sql = "SELECT * FROM accounts WHERE email = '$email' AND password = md5('$password')";
         $query = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($query);
 
@@ -20,7 +20,7 @@
                     header("Location: endUser_page.php?email=$email");
                 }
                 else if($account_type == 'admin'){
-                    header("Location: admin.php");
+                    header("Location: adminpage.php");
                 }
                 else if($account_type == 'technician'){
                     if($approved == 'yes'){

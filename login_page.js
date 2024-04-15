@@ -36,23 +36,40 @@ function create_account() {
     var contact_length = document.getElementById("contact_length");
     var container = document.getElementById("main");
     var form_button = document.getElementById("form_button");
+    var already_account = document.getElementById("already_account");
 
-    if (password !== confirm_password) {
-        popup.classList.add("open-popup-password");
-        container.classList.add("container-main");
-    } 
-    else if (!email.endsWith(lastmail)) {
-        valid.classList.add("open-valid-email");
-        container.classList.add("container-main");
-    } 
-    else if (contact_number.length < 11){
-        contact_length.classList.add("open-contact_number-length");
-        container.classList.add("container-main");
-    }
-    else if(password === confirm_password && email.endsWith(lastmail)) {
-        form_button.click();
-    }
-   
+    $.ajax({
+        url: "validate_acc.php",
+        type: "GET",
+        dataType: "json",
+        data:{
+            email: email
+        },
+        success: function(response){
+            if(response.exist){
+                already_account.classList.add("already_account-open");
+                container.classList.add("container-main");
+            }
+            else{
+                if (password !== confirm_password) {
+                    popup.classList.add("open-popup-password");
+                    container.classList.add("container-main");
+                } 
+                else if (!email.endsWith(lastmail)) {
+                    valid.classList.add("open-valid-email");
+                    container.classList.add("container-main");
+                } 
+                else if (contact_number.length < 11){
+                    contact_length.classList.add("open-contact_number-length");
+                    container.classList.add("container-main");
+                }
+                else if(password === confirm_password && email.endsWith(lastmail)) {
+                    form_button.click();
+                }
+            }
+            
+        }
+    })
 }
 
 function popup_close(){
@@ -67,6 +84,11 @@ function valid_close(){
 
 function contact_close(){
     contact_length.classList.remove("open-contact_number-length");
+    container.classList.remove("container-main");
+}
+
+function already_close(){
+    already_account.classList.remove("already_account-open");
     container.classList.remove("container-main");
 }
 

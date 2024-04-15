@@ -6,18 +6,19 @@
 
     $row2 = mysqli_fetch_assoc($user_query);
 
-    $sql = "SELECT * FROM technician_form GROUP BY email";
+    $sql = "SELECT * FROM technician_form WHERE approved = 'yes'";
     $query = mysqli_query($conn, $sql);
 
     $row = mysqli_fetch_assoc($query);
     
 
-    $baranggay = "SELECT DISTINCT baranggay FROM technician_form ORDER BY baranggay ASC";
-    $baranggay_result = mysqli_query($conn, $baranggay);
+    $barangay = "SELECT DISTINCT barangay FROM technician_form  ORDER BY barangay ASC ";
+    $barangay_result = mysqli_query($conn, $barangay);
 
     $province = "SELECT DISTINCT province FROM technician_form ORDER BY province ASC";
     $province_result = mysqli_query($conn, $province);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +50,7 @@
                     <a href="edit_profile.php?user_id=<?php echo $row2['user_id']?>"><span><i class="fa-solid fa-user"></i> Edit Profile</span> </a>
                     <a href="appointment.php?email=<?php echo $email ?>"><span><i class="fa-solid fa-calendar-days"></i> Appointment</span></a>
                     <a href="#"><span><i class="fa-solid fa-handshake"></i> Transaction</span></a>
-                    <a href="#"><span><i class="fa-solid fa-comment"></i> Chats</span></a>
+                    <!--<a href="chats.php?email=<?php echo $email ?>"><span><i class="fa-solid fa-comment"></i> Chats</span></a>-->
                     <a href="change_password.php?user_id=<?php echo $row2['user_id']?>"><span><i class="fa-solid fa-key"></i> Change Password</span></a>
                     <a href="login_page.php"><span><i class="fa-solid fa-right-from-bracket"></i> Logout</span></a>
                 </div>
@@ -74,13 +75,13 @@
                     <br>
                     <br>
                     <h3>Location:</h3>
-                    <label for="baranggay" class="baranggay">Baranggay:</label>
-                    <select name="baranggay" id="baranggay">
+                    <label for="barangay" class="barangay">Barangay:</label>
+                    <select name="barangay" id="barangay">
                         <option value=""></option>
                         <?php
-                            while($row_baranggay = mysqli_fetch_assoc($baranggay_result)){
+                            while($row_barangay = mysqli_fetch_assoc($barangay_result)){
                         ?>
-                        <option value="<?php echo $row_baranggay['baranggay'] ?>"><?php echo $row_baranggay['baranggay'] ?></option>
+                        <option value="<?php echo $row_barangay['barangay'] ?>"><?php echo $row_barangay['barangay'] ?></option>
                         <?php
                             }
                         ?>
@@ -115,8 +116,7 @@
                         <h3><?php echo $row['first_name'] ?> <?php echo $row['last_name'] ?></h3>
                         <label><?php echo $row['position'] ?></label>
                         <div class="loc">
-                            <p id="loc_brgy"><?php echo $row['baranggay'] ?></p>
-                            <p id="loc_province">, <?php echo $row['province'] ?></p>
+                            <p><span id="loc_brgy"><?php echo $row['barangay'] ?></span>, <span id="loc_province"><?php echo $row['province'] ?></span></p>
                         </div>
                         <div class="rate">
                             <p>Ratings:</p> <span class="rateYo" data-rating="<?php echo $row['ratings'] ?>"></span>
@@ -146,6 +146,8 @@
                                 <p>Service Description:</p>
                                 <p id="service_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat neque maxime illum excepturi, distinctio ad! Totam, corrupti alias soluta quod ab rerum repellat dolor odio vero a animi delectus eos!</p>
                             </div>
+                            <button class="seeLocation" onclick="seeLocation()">See Location <i class="fa-solid fa-location-dot"></i></button>
+                            <input type="hidden" id="technician_location">
                         </div>
                     </div>
                 </div>
@@ -158,24 +160,27 @@
                     </div>
                     <div class="comments">
                         <h2>Comments:</h2>
-                        <p id="review_rate">Ivan Policarpio <span class="rateYo" data-rating="<?php echo $row['ratings'] ?>"></span></p> 
-                        <input type="text" class="customer_comment" disabled>         
+                        <input type="hidden" name="user_id" value="" id="user_id_hidden">
+
+                        <?php
+                            $review = "SELECT * FROM review";
+                            $review_query = mysqli_query($conn, $review);
+                            while ($row3 = mysqli_fetch_assoc($review_query)){
+                        ?>
+                        <div class="comment_section" id="comment_section">
+                            
+                            <div class="usename_ratings">
+                                <p id="review_rate"><?php echo $row3['username'] ?></p> <p id="data_rating" class="rateYo" data-rating="<?php echo $row3['ratings']?>" ></p>
+                            </div>
+                            <input type="text" value="<?php echo $row3['comments']?>" class="customer_comment" id="customer_comment" disabled>
+                        </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="footer">
                     <hr>
-                    <!-----DATA----->
-                    <input type="hidden" value="" id="technician_contact"> 
-                    <input type="hidden" value="" id="technician_social"> 
-                    <input type="hidden" value="" id="technician_name"> 
-                    <input type="hidden" value="<?php echo $row2['first_name'] ?> <?php echo $row2['last_name'] ?>" id="endUser_name"> 
-                    <input type="hidden" value="Pending..." id="pending">
-                    <input type="hidden" id="endUser_email" value="<?php echo $row2['email'] ?>">
-                    <input type="hidden"id="endUser_message" value="Please wait to technician to accept your appointment">
-                    <input type="hidden" value="" id="tech">
-                    <input type="hidden" id="technician_message" value="Hi i have a problem can you help me?">
-                    <input type="hidden" value="" id="date">
-                    <input type="hidden" value="" id="time">
                     <button class="bookBtn" onclick="booking()">Book Now</button>
                 </div>
                 <span class="close_book" onclick="close_book()"><i class="fa-solid fa-xmark"></i></span>
@@ -204,15 +209,74 @@
                     <a href="">Dianne Castillo</a>
                     <a href="">Felecita Lamela</a>
                 </div>
-                <p class="copyright"><i class="fa-regular fa-copyright"></i>Copyright2024. All right reserved</p>
+                <p class="copyright"><i class="fa-regular fa-copyright"></i>E-Locator Services2024. All right reserved</p>
             </div>
         </div>
     </div>
     <div class="success_booking" id="success_modal">
         <div class="success_info">
+            <form action="book_appointment.php" method="post">
+                <!-----DATA----->
+                <input type="hidden" value="" name="technician_contact" id="technician_contact"> 
+                <input type="hidden" value="" name="technician_social" id="technician_social"> 
+                <input type="hidden" value="" name="technician_name" id="technician_name"> 
+                <input type="hidden" value="<?php echo $row2['first_name'] ?> <?php echo $row2['last_name'] ?>" name="endUser_name" id="endUser_name"> 
+                <input type="hidden" value="Pending..." name="pending" id="pending">
+                <input type="hidden" id="endUser_email" name="endUser_email" value="<?php echo $row2['email'] ?> ">
+                <input type="hidden"id="endUser_message" name="endUser_message" value="Please wait to technician to accept your appointment">
+                <input type="hidden" value="" name="technician_email" id="tech">
+                <input type="hidden" id="technician_message" name="technician_message" value="Hi i have a problem can you help me?">
+                <input type="hidden" id="current_date" value="<?php echo date('Y-m-d'); ?>">
+                <!------>
+                <h1>Set your Appointment</h1>
+                <div class="info">
+                    <div class="date">
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="time">
+                        <label for="time">Time:</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                    <div class="service">
+                        <label for="ipapagawa">Service:</label>
+                        <textarea id="ipapagawa" name="ipapagawa" cols="30" rows="10" required></textarea>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <input type="submit" name="submit" id="submit">
+                    <button type="button" class="appoint_now" onclick="appoint()">Book Now</button>
+                    <button type="button" class="close" onclick="close_booking()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="future_date" id="future_date">
+        <div class="future_date_info">
+            <h1>Please select a future date</h1>
+            <p>You cannot book with today's date or a past date.</p>
+            <button class="ok" onclick="close_future()">OK</button>
+        </div>
+    </div>
+    <div class="fully_book" id="fully_book">
+        <div class="fully_book_info">
+            <h1>The Technician is fully booked</h1>
+            <p>Please select another technician</p>
+            <button class="ok" onclick="close_future()">OK</button>
+        </div>
+    </div>
+    <div class="success_book" id="success_book">
+        <div class="success_book_info">
             <h1>Success Booking</h1>
-            <p>Please check your appointment page if the technician accept your book, you can see the appointment page in the profile menu bar</p>
-            <button class="close" onclick="close_booking()">Close</button>
+            <p>Please go to appoinment page to see the response of technician. You can see it in the profile menu bar</p>
+            <button class="ok" onclick="close_success()">OK</button>
+        </div>
+    </div>
+    <div class="fill_service" id="fill_service">
+        <div class="fill_service_info">
+            <h1>Service Missing</h1>
+            <p>Please don't forget to fill up service</p>
+            <button class="ok" onclick="close_fill()">OK</button>
         </div>
     </div>
     
