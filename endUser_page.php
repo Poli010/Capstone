@@ -235,7 +235,7 @@
                 <input type="hidden" id="endUser_email" name="endUser_email" value="<?php echo $row2['email'] ?> ">
                 <input type="hidden"id="endUser_message" name="endUser_message" value="Please wait to technician to accept your appointment">
                 <input type="hidden" value="" name="technician_email" id="tech">
-                <input type="hidden" id="technician_message" name="technician_message" value="Hi i have a problem can you help me?">
+                <input type="hidden" id="technician_message" name="technician_message" value="Hi i have a problem can you help me to fix my: ">
                 <input type="hidden" id="current_date" value="<?php echo date('Y-m-d'); ?>">
                 <!------>
                 <h1>Set your Appointment</h1>

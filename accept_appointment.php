@@ -12,9 +12,10 @@ if($_SERVER['REQUEST_METHOD']==="POST"){
     $appointmentId = $_POST['appointmentId'];
     $update_endUser_message = $_POST['update_endUser_message'];
     $accepted = $_POST['accepted'];
+    $end_user_contact = $_POST['end_user_contact'];
 
   
-    $sql_insert = "INSERT INTO ongoing_appointment VALUES ('','$endUser_email', '$endUser_name', '$technician_email', '$date', '$time', '$status')";
+    $sql_insert = "INSERT INTO ongoing_appointment VALUES ('','$endUser_email', '$endUser_name','$end_user_contact', '$technician_email', '$date', '$time', '$status')";
     $sql_insert_query = mysqli_query($conn, $sql_insert);
 
     if($sql_insert_query){

@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointment List</title>
     <link rel="website icon" href="icon/icon.png" type="png">
-    <link rel="stylesheet" href="appointment_list.css">
+    <link rel="stylesheet" href="ongoing_appointment.css">
     <script src="https://kit.fontawesome.com/355342439a.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -43,6 +43,7 @@
            
             <div class="contact">
                 <p><i class="fa-solid fa-envelope"></i> <?php echo $row['endUser_email'] ?></p>
+                <p><i class="fa-solid fa-phone"></i> +63<?php echo $row['endUser_contact'] ?></p>
                 <button class="priceBtn" onclick="togglePrice()">Price</button>
                 <input type="number" id="priceInput" name="price" placeholder="Enter price" style="display: none;">
                 <button class="acceptBtn" onclick="accept('<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')" disabled>Complete</button>

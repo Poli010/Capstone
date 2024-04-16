@@ -36,6 +36,18 @@ function cancelbook(){
     container.classList.add("container-open");
     cancel_modal.classList.add("cancel_modal-open");
 }
+function delete_book(){
+    var reason = document.getElementById("reason");
+
+    reason.classList.add("reason-open");
+    cancel_modal.classList.remove("cancel_modal-open");
+
+}
+
+function close_reason(){
+    reason.classList.remove("reason-open");
+    container.classList.remove("container-open");
+}
 
 function close_modal(){
     container.classList.remove("container-open");
@@ -43,7 +55,7 @@ function close_modal(){
 }
 
 //FUNCTION FOR ACCEPT BUTTON
-function accept(endUser_email, endUser_name, technician_email, date, time, appointmentId) {
+function accept(end_user_contact,endUser_email, endUser_name, technician_email, date, time, appointmentId) {
     let update_endUser_message = document.getElementById("update_endUser_message").value;
     let accepted = document.getElementById("accepted").value;
     $.ajax({
@@ -57,7 +69,8 @@ function accept(endUser_email, endUser_name, technician_email, date, time, appoi
             time: time, 
             appointmentId: appointmentId,
             update_endUser_message: update_endUser_message,
-            accepted:accepted
+            accepted:accepted,
+            end_user_contact: end_user_contact
         },
         success: function(response) {
             location.reload();

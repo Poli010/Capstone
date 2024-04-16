@@ -225,3 +225,80 @@ h1{
     background: rgb(132, 75, 75);
 }
 
+.reason{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999;
+    background: rgb(83, 81, 81);
+    height: 300px;
+    width: 650px;
+    border-radius: 10px;
+    border: 1px solid black;
+    transform: translate(0)scale(0.1);
+    visibility: hidden;
+    transition: 0.5s;
+}
+
+.reason-open{
+    transform: translate(0)scale(1);
+    visibility: visible;
+}
+
+.reason_info{
+    text-align: center;
+}
+
+.reason_info textarea{
+    resize: none;
+    height: 120px;
+    width: 500px;
+    background: rgb(124, 111, 111);
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+}
+
+.reason_info textarea:focus{
+    border: 1px solid white;
+    outline: none;
+}
+
+.cancel{
+    height: 30px;
+    width: 100px;
+    cursor: pointer;
+    background: rgb(244, 42, 42);
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.5s;
+    margin-top: 10px;
+}
+
+.cancel:hover{
+    background: rgb(143, 26, 26);
+}
+
+#submit{
+    display: none;
+}
+
+.close{
+    height: 30px;
+    width: 100px;
+    cursor: pointer;
+    background: rgb(214, 118, 118);
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.5s;
+}
+
+.close:hover{
+    background: rgb(132, 75, 75);
+}

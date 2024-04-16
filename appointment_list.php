@@ -42,14 +42,15 @@
             <button class="action_btn" onclick="show('message_collapse_<?php echo $row['id']; ?>','icon_<?php echo $row['id']; ?>','<?php echo $row['technician_email'] ?>','<?php echo $email ?>')"><i id="icon_<?php echo $row['id']; ?>" class="fa-solid fa-arrow-down"></i></button>
         </div>
         <div class="message" id="message_collapse_<?php echo $row['id']; ?>">
-            <p><?php echo $row['technician_message'] ?> </p>
+            <p><?php echo $row['technician_message'] ?> <?php echo $row['service'] ?></p>
                     <br>
             <div class="contact"> 
                 <input type="hidden" id="update_endUser_message" value="Your appointment is accepted, please check your contact info if the technician contact you">
                 <input type="hidden" id="accepted" value="accepted">
                 <p><i class="fa-solid fa-phone"></i> +63<?php echo $row['end_user_contact'] ?></p>
+                <p><i class="fa-solid fa-envelope"></i> <?php echo $row['endUser_email'] ?></p>
                 <!--<button class="chatBtn" onclick="chats('<?php echo $row['endUser_email'] ?>')">Chat</button>-->
-                <button class="acceptBtn" id="acceptBtn" onclick="accept('<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')">Accept</button>
+                <button class="acceptBtn" id="acceptBtn" onclick="accept('<?php echo $row['end_user_contact']; ?>','<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')">Accept</button>
                 <button class="cancelBtn" onclick="cancelbook()">Cancel Book</button>
                 <input type="hidden" id="technician_email" value="<?php echo $row['technician_email'] ?>">
             </div>
@@ -63,11 +64,20 @@
     <div class="cancel_modal" id="cancel_modal">
         <h1>Are you sure you want to cancel your book?</h1>
         <div class="modal_button">
-            <form action="appointment_cancelBook.php" method="post">
-                <button class="btnYes" name="submit" onclick="delete_book()">Yes</button>
-                <button class="btnNo" type="button" onclick="close_modal()">No</button>
+            <button type="button" class="btnYes" onclick="delete_book()">Yes</button>
+            <button class="btnNo" type="button" onclick="close_modal()">No</button>
+        </div>
+    </div>
+    <div class="reason" id="reason">
+        <div class="reason_info">
+            <h1>Reason why you cancel your book?</h1>
+            <form action="appointment_List_cancel_book.php" method="post">
                 <input type="hidden" name="techa" id="techa" value="">
-                <input type="hidden" name="endUser_email" id="endUser_email" value="">
+                <input type="hidden" name="endUser_email" id="endUser_email" value="<?php echo $email ?>">
+                <input type="hidden" name="endUser_name" value="<?php echo $row2['endUser_name'] ?>">
+                <textarea name="reason_cancel" id="" cols="30" rows="10"></textarea><br>
+                <button type="submit" name="submit" class="cancel">Cancel Book</button>
+                <button type="button" class="close" onclick="close_reason()">Close</button>
             </form>
         </div>
     </div>
