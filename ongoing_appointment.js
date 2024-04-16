@@ -42,24 +42,78 @@ function close_modal(){
 //FUNCTION FOR COMPLETE BUTTON
 
 function accept(endUserEmail, endUserName, technicianEmail, date, time, appointmentId) {
+    var price = document.getElementById('priceInput').value.trim();
     $.ajax({
-        url: "complete_transaction.php", // Corrected URL
+        url: "complete_transaction.php",
         type: "POST",
         data: {
-            endUser_email: endUserEmail, // Corrected parameter names
+            endUser_email: endUserEmail,
             endUser_name: endUserName,
-            technician_email: technicianEmail, 
-            date: date, 
-            time: time, 
-            appointmentId: appointmentId 
+            technician_email: technicianEmail,
+            date: date,
+            time: time,
+            appointmentId: appointmentId,
+            price: price
         },
         success: function(response) {
-            alert(response); 
-            location.reload();
+            // Instead of alert, show the modal
+            var confirmModal = document.getElementById('confirmModal');
+            confirmModal.style.display = 'block';
+            // Reload the page after a delay
+            setTimeout(function() {
+                location.reload();
+            }, 2000); // 2000 milliseconds = 2 seconds
         },
         error: function(xhr, status, error) {
             console.error(xhr.responseText);
-            alert("Error accepting appointment. Please try again."); 
+            alert("Error accepting appointment. Please try again.");
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    var confirmModal = document.getElementById('confirmModal');
+    confirmModal.style.display = 'none'; 
+
+    
+    var completeButton = document.querySelector('.acceptBtn');
+    completeButton.addEventListener('click', function() {
+        var priceInput = document.getElementById('priceInput').value.trim();
+        
+      
+        if (priceInput === '') {
+       
+            document.getElementById('modalMessage').innerText = "Please enter the price before completing the transaction.";
+            confirmModal.style.display = 'block';
+        } else {
+            
+            document.getElementById('modalMessage').innerText = "Are you sure that you input the right amount?";
+            confirmModal.style.display = 'block';
+        }
+    });
+});
+
+//function for price//
+function togglePrice() {
+    var priceInput = document.getElementById('priceInput');
+    if (priceInput.style.display === "none") {
+        priceInput.style.display = "block";
+    } else {
+        priceInput.style.display = "none";
+    }
+}
+
+
+
+var priceInput = document.getElementById('priceInput');
+var completeButton = document.querySelector('.acceptBtn');
+
+
+priceInput.addEventListener('input', function() {
+
+    if (priceInput.value.trim() !== '') {
+        completeButton.disabled = false;
+    } else {
+        completeButton.disabled = true;
+    }
+});

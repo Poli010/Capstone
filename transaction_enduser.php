@@ -2,7 +2,7 @@
     require_once("dbcon.php");
     $email = $_GET['email'];
 
-    $sql = "SELECT * FROM ongoing_appointment WHERE technician_email = '$email'";
+    $sql = "SELECT * FROM successful_transactions WHERE technician_email = '$email'";
     $query = mysqli_query($conn, $sql);
 
 ?>
@@ -14,12 +14,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointment List</title>
     <link rel="website icon" href="icon/icon.png" type="png">
-    <link rel="stylesheet" href="appointment_list.css">
+    <link rel="stylesheet" href="transaction_enduser.css">
     <script src="https://kit.fontawesome.com/355342439a.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container" id="container">
-        <h1>Ongoing Appointment <i class="fa-solid fa-calendar-check"></i></h1>
+        <h1>Successful Transactions <i class="fa-solid fa-calendar-check"></i></h1>
         <div class="header">
             <label for="">Client Name:</label>
             <label for="">Date:</label>
@@ -43,10 +43,6 @@
            
             <div class="contact">
                 <p><i class="fa-solid fa-envelope"></i> <?php echo $row['endUser_email'] ?></p>
-                <button class="priceBtn" onclick="togglePrice()">Price</button>
-                <input type="number" id="priceInput" name="price" placeholder="Enter price" style="display: none;">
-                <button class="acceptBtn" onclick="accept('<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')" disabled>Complete</button>
-                <button class="cancelBtn" onclick="cancelbook()">Cancel Book</button>
                 <input type="hidden" id="technician_email" value="<?php echo $row['technician_email'] ?>">
             </div>
             
@@ -55,27 +51,7 @@
         <?php
             }
         ?>
-    </div>
-    <div class="cancel_modal" id="cancel_modal">
-        <h1>Are you sure you want to cancel your book?</h1>
-        <div class="modal_button">
-            <form action="appointment_cancelBook.php" method="post">
-                <button class="btnYes" name="submit" onclick="delete_book()">Yes</button>
-                <button class="btnNo" type="button" onclick="close_modal()">No</button>
-                <input type="hidden" name="techa" id="techa" value="">
-                <input type="hidden" name="endUser_email" id="endUser_email" value="">
-            </form>
-        </div>
-    </div>
-    <div id="confirmModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <p>Are you sure that you input the right amount?</p>
-        <button onclick="completeTransaction()">OK</button>
-    </div>
-</div>
-</div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="ongoing_appointment.js"></script>
+<script src="transaction_enduser.js"></script>
 </body>
 </html>
