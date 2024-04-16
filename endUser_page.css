@@ -826,3 +826,20 @@ body::-webkit-scrollbar {
 .home_modal_info{
     margin-top: 10px;
 }
+
+.see_comment{
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    background: rgb(129, 115, 115);
+    color: white;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.see_comment:hover{
+    background: rgb(102, 91, 91);
+}

@@ -2,7 +2,7 @@
     require_once("dbcon.php");
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
-
+    
     require 'C:\xampp\htdocs\Capstone\PHPMailer\src\Exception.php';
     require 'C:\xampp\htdocs\Capstone\PHPMailer\src\PHPMailer.php';
     require 'C:\xampp\htdocs\Capstone\PHPMailer\src\SMTP.php';

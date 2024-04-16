@@ -153,7 +153,6 @@
                 </div>
                 <input type="hidden" name="user_id" value="" id="user_id_hidden">
                 <input type="hidden" name="endUser_email" value="<?php echo $email ?>">
-                <input type="hidden" value="" name="technician_email" id="tech">
                 <!--<div class="review_comments">
                     <div class="review">
                         <form action="insert_comment.php" method="post">
@@ -188,7 +187,7 @@
                         ?>
                     </div>
                 </div>-->
-                <button onclick="see_comment()">See Comments</button>
+                <button class="see_comment"onclick="see_comment()">See Comments</button>
                 <div class="footer">
                     <hr>
                     <button class="bookBtn" onclick="booking()">Book Now</button>

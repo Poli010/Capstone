@@ -51,24 +51,17 @@ $(function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    let review = document.getElementById('review');
-    let endUser_email = document.getElementById("endUser_email").value;
-    let technician_email = document.getElementById("tech").value;
-    
-    $.ajax({
-        url: "check_status.php",
-        type: "GET",
-        dataType: "json",
-        data:{
-            endUser_email: endUser_email,
-            technician_email: technician_email
-        },
-        success: function(response){
-            if(response.success){
-                review.style.display = "block"; // Display the review section
-            }
-        }
-    });
-});
+//HIDE CANCEL BUTTON IF THE STATUS IS ACCEPTED
+function showReview() {
+    let status = document.getElementById("status").value;
+    let review = document.getElementById("review");
+
+    if (status === "1") {
+        review.style.display = "block";
+    } else {
+        review.style.display = "none";
+    }
+}
+
+showReview();
 

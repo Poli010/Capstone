@@ -33,7 +33,6 @@
 <body>
      <!-- BOOK NOW MODAL -->
      <div class="book-now" id="book_now">
-        
                 <div class="modal_info">
                     <div class="grid">
                         <div class="img">
@@ -83,7 +82,7 @@
                         <?php
                             }
                         ?>
-                        
+                        <input type="hidden" id="status" value="<?php echo $asd['status'] ?>">
                     </div>
                 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
