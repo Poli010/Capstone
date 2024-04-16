@@ -35,23 +35,32 @@
             </div>
 
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
+          
+          <div class="carousel-inner">
             <div class="carousel-item active" style="height: 500px;">
-                <img src="pic1.jpg" class="d-block w-100" alt="pic1.png">
+                <img src="bg5.jpg" class="d-block w-100" alt="bg5.png">
             </div>
-            <div class="carousel-item" style="height: 500px;">
-                <img src="pic2.jpg" class="d-block w-50" alt="pic2.png">
-        </div>
-    
+         <div class="carousel-item" style="height: 500px;">
+                <img src="bg8.jpg" class="d-block w-100" alt="bg8.png">
+            </div>
+        <div class="carousel-item" style="height: 500px;">
+                <img src="bg11.jpg" class="d-block w-100" alt="bg11.png">
+            </div>
+        <div class="carousel-item" style="height: 500px;">
+                <img src="bg12.jpg" class="d-block w-100" alt="bg12.png">
+            </div>
+        <div class="carousel-item" style="height: 500px;">
+                <img src="bg13.jpg" class="d-block w-100" alt="bg13.png">
+             </div>
+
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
+             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+             <span class="sr-only">Previous</span>
+          </a>
         <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
-        </a>
+         </a>
     </div>
         <div class="content-container" id="about">
             <h1>About Us</h1>

@@ -2,7 +2,7 @@
 
 require_once("dbcon.php");
 if (isset($_POST['endUser_email'])) {
-    
+    $price = $_POST['price'];
     $endUserEmail = $_POST['endUser_email'];
     $endUserName = $_POST['endUser_name'];
     $technicianEmail = $_POST['technician_email'];
@@ -12,7 +12,8 @@ if (isset($_POST['endUser_email'])) {
     $status = "Complete"; 
 
     
-    $sqlInsert = "INSERT INTO successful_transactions (endUser_email, endUser_name, technician_email, date, time, status) VALUES ('$endUserEmail', '$endUserName', '$technicianEmail', '$date', '$time', '$status')";
+    $sqlInsert = "INSERT INTO successful_transactions (endUser_email, endUser_name, technician_email, date, time, status, cost_of_repair) VALUES ('$endUserEmail', '$endUserName', '$technicianEmail', '$date', '$time', '$status', '$price')";
+
     
     if (mysqli_query($conn, $sqlInsert)) {
         
