@@ -44,7 +44,7 @@
         <div class="message" id="message_collapse_<?php echo $row['id']; ?>">
             <p><?php echo $row['technician_message'] ?> </p>
                     <br>
-            <div class="contact">
+            <div class="contact"> 
                 <input type="hidden" id="update_endUser_message" value="Your appointment is accepted, please check your contact info if the technician contact you">
                 <input type="hidden" id="accepted" value="accepted">
                 <p><i class="fa-solid fa-phone"></i> +63<?php echo $row['end_user_contact'] ?></p>
