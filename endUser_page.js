@@ -95,9 +95,7 @@ function book(user_id){
     let technician_contact = document.getElementById('technician_contact');
     let technician_social = document.getElementById('technician_social');
     let technician_location = document.getElementById('technician_location');
-    
-
-
+    let user_id_hidden = document.getElementById("user_id_hidden");
 
     $.ajax({
         url: "book_now.php",
@@ -118,15 +116,15 @@ function book(user_id){
             technician_contact.value = +'0' + response.data.contact_number
             technician_social.value = response.data.social_media
             technician_location.value = response.data.address + ' ' + response.data.barangay + ' ' + response.data.city + ' ' + response.data.province;
+            user_id_hidden.value = response.data.user_id;
             book_now.classList.add("book-now-open");
-            
-
             if(time_available.textContent === 'Time Available: '){
                 time_available.textContent = "Time Available: ---";
             }
         }
     })
 }
+
 
 function close_book(){
     book_now.classList.remove("book-now-open");
@@ -238,6 +236,10 @@ function appoint(){
     let endUser_email = document.getElementById("endUser_email").value;
     let ipapagawa= document.getElementById('ipapagawa').value;
     var fill_service = document.getElementById('fill_service');
+    let service_category = document.getElementById("service_category").value;
+    let time = document.getElementById("time").value;
+    var time_modal = document.getElementById("time_modal");
+    var home_modal = document.getElementById("home_modal");
 
     $.ajax({
         url: "check_appointment.php",
@@ -254,6 +256,14 @@ function appoint(){
             } 
             else if(ipapagawa === ''){
                 fill_service.classList.add("fill_service-open")
+                success_modal.classList.remove("success_booking-open");
+            }
+            else if(time === ''){
+                time_modal.classList.add("time_modal-open");
+                success_modal.classList.remove("success_booking-open");
+            }
+            else if(service_category === ""){
+                home_modal.classList.add("home_modal-open");
                 success_modal.classList.remove("success_booking-open");
             }
             else if(response.success){
@@ -288,8 +298,34 @@ function close_fill(){
     success_modal.classList.add("success_booking-open");
 }
 
+function close_time(){
+    time_modal.classList.remove("time_modal-open");
+    success_modal.classList.add("success_booking-open");
+}
 
+function close_home(){
+    home_modal.classList.remove("home_modal-open");
+    success_modal.classList.add("success_booking-open");
+}
 
        
+document.addEventListener("DOMContentLoaded", function() {
+    let ratingInput = document.getElementById("rating");
+    let rateYoInstance = $("#rateYo").rateYo(); 
 
+    $("#rateYo").rateYo("option", "onChange", function (rating, rateYoInstance) {
+        ratingInput.value = rating;
+    });
+    ratingInput.addEventListener('input', function(){
+        let ratingValue = this.value;
+        rateYoInstance.rateYo("rating", parseFloat(ratingValue));
+    });
+});
 
+function see_comment(){
+    let user_id_hidden = document.getElementById("user_id_hidden").value;
+    let endUser_email = document.getElementById('endUser_email').value;
+    let technician_email = document.getElementById('tech').value;
+
+    window.location.href = "review.php?email=" +endUser_email + "&user_id=" + user_id_hidden + "&technician_email=" + technician_email;
+}

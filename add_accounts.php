@@ -3,9 +3,9 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
-    require 'D:\xampp\htdocs\Capstone\PHPMailer\src\Exception.php';
-    require 'D:\xampp\htdocs\Capstone\PHPMailer\src\PHPMailer.php';
-    require 'D:\xampp\htdocs\Capstone\PHPMailer\src\SMTP.php';
+    require 'C:\xampp\htdocs\Capstone\PHPMailer\src\Exception.php';
+    require 'C:\xampp\htdocs\Capstone\PHPMailer\src\PHPMailer.php';
+    require 'C:\xampp\htdocs\Capstone\PHPMailer\src\SMTP.php';
 
     if(isset($_POST["submit"])){
         $account_type = $_POST['account_type'];
@@ -20,7 +20,7 @@
         $default_picture = 'icon/icon.png';
         $approved = 'yes';
 
-        $sql = "INSERT INTO accounts VALUES('','$account_type','$first_name','$last_name','$email','$username','$contact_number',md5('$password'),'$verification','','$user_id','$approved','$default_picture')";
+        $sql = "INSERT INTO accounts VALUES('','$account_type','$first_name','$last_name','$email','$username','$contact_number','$password','$verification','','$user_id','$approved','$default_picture')";
         $query = mysqli_query($conn, $sql);
 
         if($query){

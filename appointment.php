@@ -33,6 +33,7 @@
             <label for="">Date:</label>
             <label for="">Time:</label>
             <label for="">Status:</label>
+            <label for="">Service Category:</label>
             <label for="">Action:</label>
         </div>
         <hr>
@@ -40,11 +41,11 @@
                 while($row = mysqli_fetch_assoc($query)){
             ?>
         <div class="info">
-
             <p><?php echo $row['technician_name'] ?></p>
             <p><?php echo date("F j, Y", strtotime($row['date'])); ?></p>
             <p><?php echo date('h:i A', strtotime($row['time'])); ?></p>
-            <p><?php echo $row['status'] ?></p>
+            <p id="status"><?php echo $row['status'] ?></p>
+            <p><?php echo $row['type_of_service'] ?></p>
             <button class="action_btn" onclick="show('message_collapse_<?php echo $row['id']; ?>','icon_<?php echo $row['id']; ?>','<?php echo $row['technician_email'] ?>','<?php echo $email ?>')"><i id="icon_<?php echo $row['id']; ?>" class="fa-solid fa-arrow-down"></i></button>
         </div>
         <div class="message" id="message_collapse_<?php echo $row['id']; ?>">
@@ -55,7 +56,7 @@
                 <p><i class="fa-solid fa-envelope"></i> <?php echo $row['technician_email'] ?></p>
                 <a href="<?php echo $row['technician_social'] ?>">Social Media Link Here</a>
                 <!------<button class="chatBtn" onclick="chats('<?php echo $row['endUser_email'] ?>')">Chats</button>------->
-                <button class="cancelBtn" onclick="cancelbook()">Cancel Book</button>
+                <button class="cancelBtn" id="cancel_btn" onclick="cancelbook()">Cancel Book</button>
                 <input type="hidden" id="technician_email" value="<?php echo $row['technician_email'] ?>">
             </div>
             

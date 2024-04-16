@@ -20,8 +20,10 @@
         $date = $_POST['date'];
         $service = $_POST['ipapagawa'];
         $pending = $_POST['pending'];
+        $service_category = $_POST['service_category'];
+        $endUser_contact = $_POST['endUser_contact'];
         
-        $sql = "INSERT INTO appointment_list VALUES('','$endUser_email','$endUser_name','$endUser_message','$technician_email','$technician_name','$technician_message','$technician_contact','$technician_social','$time','$date','$service','$pending')";
+        $sql = "INSERT INTO appointment_list VALUES('','$endUser_email','$endUser_name','$endUser_message','$endUser_contact','$technician_email','$technician_name','$technician_message','$technician_contact','$technician_social','$time','$date','$service','$pending','$service_category')";
         $query = mysqli_query($conn, $sql);
 
         if($query){
@@ -39,7 +41,7 @@
             $mail->addAddress($_POST['technician_email']);
             $mail->isHTML(true);
             $mail->Subject = "You have new appointment";
-            $mail->Body =  ucwords($endUser_name). " Says: <strong>$service</strong>, open your account and go to appointment page to accept this request";
+            $mail->Body = "APPOINTMENT REMINDER! <br><br> CUSTOMER NAME:" .ucwords($endUser_name)."<br> SERVICE REQUEST:". $service. "<br> TYPE OF SERVICE:".$service_category. "<br><br> Open your account and go to appointment page to accept this request";
         
             $mail->send();
             

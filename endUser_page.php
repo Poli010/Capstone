@@ -151,25 +151,34 @@
                         </div>
                     </div>
                 </div>
-                <div class="review_comments">
+                <input type="hidden" name="user_id" value="" id="user_id_hidden">
+                <input type="hidden" name="endUser_email" value="<?php echo $email ?>">
+                <input type="hidden" value="" name="technician_email" id="tech">
+                <!--<div class="review_comments">
                     <div class="review">
-                        <h2 class="title_review">Review:</h2>
-                        <p class="comment_rate">Rate: <span id="rateYo"></span></p>
-                        <textarea name="" id="comment_area" cols="30" rows="10" placeholder="Write Comment"></textarea>
-                        <button class="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+                        <form action="insert_comment.php" method="post">
+                            <input type="hidden" name="endUser_email" value="<?php echo $email ?>">
+                            <input type="hidden" name="username" value="<?php echo $row2['username'] ?>">
+                            <input type="hidden" name="user_id" value="<?php echo $row2['user_id'] ?>">
+                            <input type="hidden" value="" name="technician_email" id="tech">
+                            <input type="hidden" id="rating" name="rate">
+                            <h2 class="title_review">Review:</h2>
+                            <p class="comment_rate">Rate: <span id="rateYo"></span></p>
+                            <textarea name="comments" id="comment_area" cols="30" rows="10" placeholder="Write Comment"></textarea>
+                            <button class="sendBtn" name="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+                        </form>
                     </div>
                     <div class="comments">
                         <h2>Comments:</h2>
-                        <input type="hidden" name="user_id" value="" id="user_id_hidden">
-
+                        
                         <?php
                             $review = "SELECT * FROM review";
                             $review_query = mysqli_query($conn, $review);
                             while ($row3 = mysqli_fetch_assoc($review_query)){
                         ?>
                         <div class="comment_section" id="comment_section">
-                            
                             <div class="usename_ratings">
+                               
                                 <p id="review_rate"><?php echo $row3['username'] ?></p> <p id="data_rating" class="rateYo" data-rating="<?php echo $row3['ratings']?>" ></p>
                             </div>
                             <input type="text" value="<?php echo $row3['comments']?>" class="customer_comment" id="customer_comment" disabled>
@@ -178,7 +187,8 @@
                             }
                         ?>
                     </div>
-                </div>
+                </div>-->
+                <button onclick="see_comment()">See Comments</button>
                 <div class="footer">
                     <hr>
                     <button class="bookBtn" onclick="booking()">Book Now</button>
@@ -218,6 +228,7 @@
             <form action="book_appointment.php" method="post">
                 <!-----DATA----->
                 <input type="hidden" value="" name="technician_contact" id="technician_contact"> 
+                <input type="hidden" name="endUser_contact" value="<?php echo $row2['contact_number'] ?>">
                 <input type="hidden" value="" name="technician_social" id="technician_social"> 
                 <input type="hidden" value="" name="technician_name" id="technician_name"> 
                 <input type="hidden" value="<?php echo $row2['first_name'] ?> <?php echo $row2['last_name'] ?>" name="endUser_name" id="endUser_name"> 
@@ -238,8 +249,16 @@
                         <label for="time">Time:</label>
                         <input type="time" id="time" name="time" required>
                     </div>
+                    <div class="home_service">
+                        <label for="service_category">Service Category:</label>
+                        <select name="service_category" id="service_category" required>
+                            <option value=""></option>
+                            <option value="Walk In">Walk In</option>
+                            <option value="Home Service">Home Service</option>
+                        </select>
+                    </div>
                     <div class="service">
-                        <label for="ipapagawa">Service:</label>
+                        <label for="ipapagawa">Service Request:</label>
                         <textarea id="ipapagawa" name="ipapagawa" cols="30" rows="10" required></textarea>
                     </div>
                 </div>
@@ -279,7 +298,20 @@
             <button class="ok" onclick="close_fill()">OK</button>
         </div>
     </div>
-    
+    <div class="time_modal" id="time_modal">
+        <div class="time_modal_info">
+            <h1>Select Time</h1>
+            <p>Please don't forget to select time</p>
+            <button class="ok" onclick="close_time()">OK</button>
+        </div>
+    </div>
+    <div class="home_modal" id="home_modal">
+        <div class="home_modal_info">
+            <h1>Select Service Category</h1>
+            <p>Please don't forget to select service category</p>
+            <button class="ok" onclick="close_home()">OK</button>
+        </div>
+    </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 <script src="endUser_page.js"></script>

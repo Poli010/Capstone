@@ -44,6 +44,8 @@ function close_modal(){
 
 //FUNCTION FOR ACCEPT BUTTON
 function accept(endUser_email, endUser_name, technician_email, date, time, appointmentId) {
+    let update_endUser_message = document.getElementById("update_endUser_message").value;
+    let accepted = document.getElementById("accepted").value;
     $.ajax({
         url: "accept_appointment.php",
         type: "POST",
@@ -53,15 +55,26 @@ function accept(endUser_email, endUser_name, technician_email, date, time, appoi
             technician_email: technician_email, 
             date: date, 
             time: time, 
-            appointmentId: appointmentId 
+            appointmentId: appointmentId,
+            update_endUser_message: update_endUser_message,
+            accepted:accepted
         },
         success: function(response) {
-            alert(response); 
             location.reload();
         },
-        error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-            alert("Error accepting appointment. Please try again."); 
-        }
+
     });
 }
+
+
+//HIDE ACCEPT BUTTON IF THE STATUS IS ACCEPTED
+function hideAcceptButton() {
+    let status = document.getElementById("status");
+    let acceptButton = document.getElementById("acceptBtn");
+
+    if (status.textContent.trim() === "accepted") {
+      
+        acceptButton.style.display = "none";
+    }
+}
+hideAcceptButton();

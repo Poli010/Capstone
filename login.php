@@ -5,7 +5,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $sql = "SELECT * FROM accounts WHERE email = '$email' AND password = md5('$password')";
+        $sql = "SELECT * FROM accounts WHERE email = '$email' AND password = '$password'";
         $query = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($query);
 

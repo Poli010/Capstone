@@ -52,3 +52,15 @@ function close_reason(){
     reason.classList.remove("reason-open");
     container.classList.remove("container-open");
 }
+
+//HIDE CANCEL BUTTON IF THE STATUS IS ACCEPTED
+function hideCancelButton() {
+    let status = document.getElementById("status");
+    let cancelButton = document.getElementById("cancel_btn");
+
+    if (status.textContent.trim() === "accepted") {
+      
+        cancelButton.style.display = "none";
+    }
+}
+hideCancelButton();

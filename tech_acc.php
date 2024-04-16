@@ -3,7 +3,7 @@
     $email = $_GET['email'];
 
   
-    $sql = "SELECT user_id, first_name, last_name, username, contact_number, address, time_availability FROM technician_form WHERE email = '$email'";
+    $sql = "SELECT * FROM technician_form WHERE email = '$email'";
     $query = mysqli_query($conn, $sql);
 
    
@@ -41,22 +41,13 @@
     <a href="ongoing_appointment.php?email=<?php echo urlencode($email); ?>"><i class="fas fa-clock fa-lg" title="Ongoing Appointments"></i></a>
             <a href="complete_transactions.php?email=<?php echo urlencode($email); ?>"><i class="fas fa-check-circle"title="Successful Transactions"></i></a>
             <a href="#"><i class="fas fa-comments" title="Feedbacks"></i></a>
-            <a href="technician_profile_edit.php?user_id=<?php echo $user_id; ?>"><i class="fas fa-cog" title="Account Settings"></i></a>
+            <a href="edit_technician.php?user_id=<?php echo $user_id; ?>"><i class="fas fa-cog" title="Account Settings"></i></a>
             <a href="logout.php"><i class="fas fa-sign-out-alt"title="Logout"></i></a>
         </div>
         <div class="main-content">
             <h1>Technician Account</h1>
             <hr>
-            <div class="info">
-                <form action="upload.php" method="post" enctype="multipart/form-data">
-                    <div class="file-input-container">
-                        <input type="file" name="profilePictureInput" id="profilePictureInput">
-                    </div>
-                    <br>
-                    <label for="profilePictureInput" id="uploadLabel">Choose a file</label>
-                    <button type="submit" id="submit">Upload</button>
-                </form>
-            </div>
+            <img class="info" src="<?php echo $row['profile_picture'] ?>" alt="">
             <div class="data">
             <h3><?php echo $firstname . " " . $lastname; ?></h3>
                 <h3>Username: <?php echo $username; ?></h3>

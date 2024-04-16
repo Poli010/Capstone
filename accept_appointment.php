@@ -1,7 +1,7 @@
 <?php
 require_once("dbcon.php");
 
-if (isset($_POST['endUser_email'])) {
+if($_SERVER['REQUEST_METHOD']==="POST"){
    
     $endUser_email = $_POST['endUser_email'];
     $endUser_name = $_POST['endUser_name'];
@@ -10,25 +10,23 @@ if (isset($_POST['endUser_email'])) {
     $time = $_POST['time'];
     $status = "Ongoing";
     $appointmentId = $_POST['appointmentId'];
+    $update_endUser_message = $_POST['update_endUser_message'];
+    $accepted = $_POST['accepted'];
 
   
-    $sql_insert = "INSERT INTO ongoing_appointment (endUser_email, endUser_name, technician_email, date, time, status) VALUES ('$endUser_email', '$endUser_name', '$technician_email', '$date', '$time', '$status')";
+    $sql_insert = "INSERT INTO ongoing_appointment VALUES ('','$endUser_email', '$endUser_name', '$technician_email', '$date', '$time', '$status')";
+    $sql_insert_query = mysqli_query($conn, $sql_insert);
 
- 
-    if (mysqli_query($conn, $sql_insert)) {
-      
-        $sql_delete = "DELETE FROM appointment_list WHERE id = '$appointmentId'";
-        if (mysqli_query($conn, $sql_delete)) {
-            echo "Appointment accepted and added to ongoing appointments. Appointment removed from the list.";
-        } else {
-            echo "Error deleting appointment from the list: " . mysqli_error($conn);
+    if($sql_insert_query){
+        $sql_delete = "UPDATE appointment_list SET endUser_message = '$update_endUser_message', `status` = '$accepted' WHERE endUser_email = '$endUser_email'";
+        $sql_delete_query = mysqli_query($conn, $sql_delete);
+
+        if($sql_delete_query){
+            echo json_encode(['success'=> true]);
         }
-    } else {
-       
-        echo "Error accepting appointment and adding to ongoing appointments: " . mysqli_error($conn);
     }
-} else {
-   
-    echo "Error: End User Email not provided.";
+          
 }
+  
+
 ?>

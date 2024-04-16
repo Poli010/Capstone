@@ -3,9 +3,9 @@ require_once("dbcon.php");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-    require 'D:\xampp\htdocs\Capstone\PHPMailer\src\Exception.php';
-    require 'D:\xampp\htdocs\Capstone\PHPMailer\src\PHPMailer.php';
-    require 'D:\xampp\htdocs\Capstone\PHPMailer\src\SMTP.php';
+require 'C:\xampp\htdocs\Capstone\PHPMailer\src\Exception.php';
+require 'C:\xampp\htdocs\Capstone\PHPMailer\src\PHPMailer.php';
+require 'C:\xampp\htdocs\Capstone\PHPMailer\src\SMTP.php';
 
 if(isset($_POST['submit'])){
     $profile_destination =  "profile_picture/";
@@ -78,11 +78,11 @@ if(isset($_POST['submit'])){
 
     if(move_uploaded_file($_FILES['profile']["tmp_name"],$profile_img) && move_uploaded_file($_FILES['valid']["tmp_name"],$valid_id) && move_uploaded_file($_FILES['resume']["tmp_name"],$curriculum_vitae)){
 
-        $signup = "INSERT INTO technician_form VALUES ('','$status','$technician_position','$firstname','$middlename','$lastname','$suffix','$address','$region','$province','$city','$barangay','$business_name','$contact_number','$social_media','$email','$username',md5('$password'),'$profile_img','$valid_id','$business_permit','$curriculum_vitae','$service','$user_id','','','')";
+        $signup = "INSERT INTO technician_form VALUES ('','$status','$technician_position','$firstname','$middlename','$lastname','$suffix','$address','$region','$province','$city','$barangay','$business_name','$contact_number','$social_media','$email','$username','$password','$profile_img','$valid_id','$business_permit','$curriculum_vitae','$service','$user_id','','','')";
         $query = mysqli_query($conn, $signup);
 
         if($query){
-            $accounts = "INSERT INTO accounts VALUES ('','$technician','$firstname','$lastname','$email','$username','$contact_number',md5('$password'),'$verification','','$user_id','','$profile_img')";
+            $accounts = "INSERT INTO accounts VALUES ('','$technician','$firstname','$lastname','$email','$username','$contact_number','$password','$verification','','$user_id','','$profile_img')";
             $query2 = mysqli_query($conn, $accounts);
 
             header("Location: verification_page.php?email=$email");

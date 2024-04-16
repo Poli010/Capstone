@@ -74,7 +74,8 @@ body{
 }
 
 .profile{
-    margin-top: 100px;
+    margin-top: 0px;
+    margin-right: 260px;
     display: flex;
     flex-direction: column;
 }
@@ -121,10 +122,18 @@ body{
     height: 30px;
     width: 100px;
     border-radius: 10px;
-    margin-left: 40%;
+    margin-left: 42%;
     cursor: pointer;
 }
 
 .savebtn:hover{
     background: rgb(102, 91, 91);
+}
+
+#time_available{
+    margin-left: 170px;
+}
+
+.label_time{
+    margin-left: 170px;
 }
