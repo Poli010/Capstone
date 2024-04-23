@@ -10,15 +10,19 @@ if (isset($_POST['endUser_email'])) {
     $time = $_POST['time'];
     $appointmentId = $_POST['appointmentId'];
     $status = "Complete"; 
+    $type_of_service = $_POST['type_of_service'];
+    $complete = '1';
 
     
-    $sqlInsert = "INSERT INTO successful_transactions (endUser_email, endUser_name, technician_email, date, time, status, cost_of_repair) VALUES ('$endUserEmail', '$endUserName', '$technicianEmail', '$date', '$time', '$status', '$price')";
+    $sqlInsert = "INSERT INTO successful_transactions (endUser_email, endUser_name, technician_email, type_of_service, date, time, status, cost_of_repair) VALUES ('$endUserEmail', '$endUserName', '$technicianEmail','$type_of_service', '$date', '$time', '$status', '$price')";
 
     
     if (mysqli_query($conn, $sqlInsert)) {
         
         $sqlDelete = "DELETE FROM ongoing_appointment WHERE id = '$appointmentId'";
         if (mysqli_query($conn, $sqlDelete)) {
+            $sql = "INSERT INTO able_comment VALUES('','$endUserEmail','$technicianEmail','$complete')";
+            $query = mysqli_query($conn, $sql);
             
         } else {
            

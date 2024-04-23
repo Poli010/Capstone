@@ -55,9 +55,10 @@ function close_modal(){
 }
 
 //FUNCTION FOR ACCEPT BUTTON
-function accept(end_user_contact,endUser_email, endUser_name, technician_email, date, time, appointmentId) {
+function accept(type_of_service, end_user_contact,endUser_email, endUser_name, technician_email, date, time, appointmentId) {
     let update_endUser_message = document.getElementById("update_endUser_message").value;
     let accepted = document.getElementById("accepted").value;
+
     $.ajax({
         url: "accept_appointment.php",
         type: "POST",
@@ -70,7 +71,8 @@ function accept(end_user_contact,endUser_email, endUser_name, technician_email, 
             appointmentId: appointmentId,
             update_endUser_message: update_endUser_message,
             accepted:accepted,
-            end_user_contact: end_user_contact
+            end_user_contact: end_user_contact,
+            type_of_service: type_of_service
         },
         success: function(response) {
             location.reload();

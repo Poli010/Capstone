@@ -41,7 +41,7 @@ function close_modal(){
 
 //FUNCTION FOR COMPLETE BUTTON
 
-function accept(endUserEmail, endUserName, technicianEmail, date, time, appointmentId) {
+function accept(type_of_service, endUserEmail, endUserName, technicianEmail, date, time, appointmentId) {
     var price = document.getElementById('priceInput').value.trim();
     $.ajax({
         url: "complete_transaction.php",
@@ -53,16 +53,11 @@ function accept(endUserEmail, endUserName, technicianEmail, date, time, appointm
             date: date,
             time: time,
             appointmentId: appointmentId,
-            price: price
+            price: price,
+            type_of_service: type_of_service
         },
         success: function(response) {
-            // Instead of alert, show the modal
-            var confirmModal = document.getElementById('confirmModal');
-            confirmModal.style.display = 'block';
-            // Reload the page after a delay
-            setTimeout(function() {
-                location.reload();
-            }, 2000); // 2000 milliseconds = 2 seconds
+         location.reload();
         },
         error: function(xhr, status, error) {
             console.error(xhr.responseText);

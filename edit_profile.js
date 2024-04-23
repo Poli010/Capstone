@@ -14,3 +14,8 @@ contact_number.addEventListener("input", function (){
         this.value = value.slice(0,11);
     }
 });
+
+
+function back(email){
+    window.location.href = "endUser_page.php?email=" + email;
+}

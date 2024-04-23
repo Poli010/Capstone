@@ -47,11 +47,11 @@
                 </div>
                 <hr>
                 <div class="profile_settings">
-                    <a href="edit_profile.php?user_id=<?php echo $row2['user_id']?>"><span><i class="fa-solid fa-user"></i> Edit Profile</span> </a>
+                    <a href="edit_profile.php?email=<?php echo $email?>"><span><i class="fa-solid fa-user"></i> Edit Profile</span> </a>
                     <a href="appointment.php?email=<?php echo $email ?>"><span><i class="fa-solid fa-calendar-days"></i> Appointment</span></a>
-                    <a href="#"><span><i class="fa-solid fa-handshake"></i> Transaction</span></a>
+                    <a href="transaction_enduser.php?email=<?php echo $email ?>"><span><i class="fa-solid fa-handshake"></i> Transaction</span></a>
                     <!--<a href="chats.php?email=<?php echo $email ?>"><span><i class="fa-solid fa-comment"></i> Chats</span></a>-->
-                    <a href="change_password.php?user_id=<?php echo $row2['user_id']?>"><span><i class="fa-solid fa-key"></i> Change Password</span></a>
+                    <a href="change_password.php?email=<?php echo $email?>"><span><i class="fa-solid fa-key"></i> Change Password</span></a>
                     <a href="login_page.php"><span><i class="fa-solid fa-right-from-bracket"></i> Logout</span></a>
                 </div>
             </div>
@@ -272,7 +272,7 @@
     <div class="future_date" id="future_date">
         <div class="future_date_info">
             <h1>Please select a future date</h1>
-            <p>You cannot book with today's date or a past date.</p>
+            <p>Invalid date selected</p>
             <button class="ok" onclick="close_future()">OK</button>
         </div>
     </div>

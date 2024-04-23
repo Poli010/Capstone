@@ -2,7 +2,7 @@
     require_once("dbcon.php");
     $email = $_GET['email'];
 
-    $sql = "SELECT * FROM successful_transactions WHERE technician_email = '$email'";
+    $sql = "SELECT * FROM successful_transactions WHERE endUser_email = '$email'";
     $query = mysqli_query($conn, $sql);
 
 ?>
@@ -21,11 +21,11 @@
     <div class="container" id="container">
         <h1>Successful Transactions <i class="fa-solid fa-calendar-check"></i></h1>
         <div class="header">
-            <label for="">Client Name:</label>
+            <label for="">Technician Name:</label>
             <label for="">Date:</label>
             <label for="">Time:</label>
             <label for="">Status:</label>
-            <label for="">Action:</label>
+            <label for="">Price:</label>
         </div>
         <hr>
         <?php
@@ -33,18 +33,15 @@
             ?>
         <div class="info">
 
-            <p><?php echo $row['endUser_name'] ?></p>
+            <p><?php echo $row['technician_email'] ?></p>
             <p><?php echo date("F j, Y", strtotime($row['date'])); ?></p>
-            <p><?php echo $row['time'] ?> </p>
+            <p><?php echo date('h:i A', strtotime($row['time'])); ?> </p>
             <p><?php echo $row['status'] ?></p>
-            <button class="action_btn" onclick="show('message_collapse_<?php echo $row['id']; ?>','icon_<?php echo $row['id']; ?>','<?php echo $row['technician_email'] ?>','<?php echo $email ?>')"><i id="icon_<?php echo $row['id']; ?>" class="fa-solid fa-arrow-down"></i></button>
+            <p>P<?php echo $row['cost_of_repair']?></p>
         </div>
         <div class="message" id="message_collapse_<?php echo $row['id']; ?>">
            
-            <div class="contact">
-                <p><i class="fa-solid fa-envelope"></i> <?php echo $row['endUser_email'] ?></p>
-                <input type="hidden" id="technician_email" value="<?php echo $row['technician_email'] ?>">
-            </div>
+    
             
         </div>
         <hr>

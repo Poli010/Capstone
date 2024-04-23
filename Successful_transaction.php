@@ -1,3 +1,10 @@
+<?php
+    require_once("dbcon.php");
+
+    $sql = "SELECT * FROM successful_transactions";
+    $query = mysqli_query($conn, $sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,22 +34,41 @@
         </div>
     </nav>
 
-    <div class="table-container">
+    <div class="table-container" id="container">
         <table class="table" border="2">
             <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Date/Time</th>
-                <th>Device Repaired</th>
+                <th>Client Name:</th>
+                <th>Email:</th>
+                <th>Type of service:</th>
+                
                 <th>Cost of Repair</th>
-                <th>Technician</th>
+                <th>Service</th>
+                <th>Technician email:</th>
+                <th>Date</th>
+                <th>Time</th>
+                
             </tr>
+            <?php
+                while($row = mysqli_fetch_assoc($query)){
+            ?>
+            <tr>
+                <td><?php echo $row['endUser_name'] ?> <?php echo $row['endUser_name'] ?></td>
+                <td><?php echo $row['endUser_email'] ?></td>
+                <td><?php echo $row['type_of_service'] ?></td>
+                <td class="email"><?php echo $row['cost_of_repair'] ?></td>
+                <td><?php echo $row['service'] ?> </td>
+                <td><?php echo $row['technician_email'] ?></td>
+                <td><?php echo $row['date'] ?></td></td>
+                <td><?php echo $row['time'] ?></td></td>
             
-      </div>
+              
+            </tr>
 
-
-
-
+            <?php
+                }
+            ?>
+        </table>
+    </div>
 
 
 

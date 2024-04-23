@@ -29,7 +29,7 @@
                 <li class="nav-item"><a class="nav-link" href="adminpage.php" style="color: white;">Accounts</a></li>
                 <li class="nav-item"><a class="nav-link" href="pending_applicants.php" style="color: white;">Pending Applicants</a></li>
                 <li class="nav-item"><a class="nav-link" href="#services" style="color: white;">Pending Appointments</a></a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact" style="color: white;">Successful Transactions</a></li>
+                <li class="nav-item"><a class="nav-link" href="Successful_transaction.php" style="color: white;">Successful Transactions</a></li>
                 <li class="nav-item"><a class="nav-link" href="login_page.php" style="color: white;">Logout</a></li>
             </ul>
         </div>

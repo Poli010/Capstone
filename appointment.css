@@ -41,6 +41,13 @@ h1{
     margin-bottom: 20px;
 }
 
+.header_container{
+    position: fixed;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+
 .header{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -196,7 +203,7 @@ h1{
     flex-direction: column;
     z-index: 999;
     background: rgb(83, 81, 81);
-    height: 300px;
+    height: 200px;
     width: 650px;
     border-radius: 10px;
     border: 1px solid black;
@@ -264,4 +271,15 @@ h1{
 
 .close:hover{
     background: rgb(132, 75, 75);
+}
+
+#reason_select{
+    width: 200px;
+    height: 20px;
+    border-radius: 5px;
+    background: rgb(124, 111, 111);
+    border: 1px solid black;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
 }

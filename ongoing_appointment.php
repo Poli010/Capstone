@@ -25,6 +25,7 @@
             <label for="">Date:</label>
             <label for="">Time:</label>
             <label for="">Status:</label>
+            <label for="">Type of Service:</label>
             <label for="">Action:</label>
         </div>
         <hr>
@@ -37,6 +38,7 @@
             <p><?php echo date("F j, Y", strtotime($row['date'])); ?></p>
             <p><?php echo $row['time'] ?> </p>
             <p><?php echo $row['status'] ?></p>
+            <p><?php echo $row['type_of_service']?></p>
             <button class="action_btn" onclick="show('message_collapse_<?php echo $row['id']; ?>','icon_<?php echo $row['id']; ?>','<?php echo $row['technician_email'] ?>','<?php echo $email ?>')"><i id="icon_<?php echo $row['id']; ?>" class="fa-solid fa-arrow-down"></i></button>
         </div>
         <div class="message" id="message_collapse_<?php echo $row['id']; ?>">
@@ -45,8 +47,8 @@
                 <p><i class="fa-solid fa-envelope"></i> <?php echo $row['endUser_email'] ?></p>
                 <p><i class="fa-solid fa-phone"></i> +63<?php echo $row['endUser_contact'] ?></p>
                 <button class="priceBtn" onclick="togglePrice()">Price</button>
-                <input type="number" id="priceInput" name="price" placeholder="Enter price" style="display: none;">
-                <button class="acceptBtn" onclick="accept('<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')" disabled>Complete</button>
+                <input type="number" id="priceInput" name="price" placeholder="Enter price" style="display: none;" required>
+                <button class="acceptBtn" onclick="accept('<?php echo $row['type_of_service']; ?>','<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')" disabled>Complete</button>
                 <button class="cancelBtn" onclick="cancelbook()">Cancel Book</button>
                 <input type="hidden" id="technician_email" value="<?php echo $row['technician_email'] ?>">
             </div>

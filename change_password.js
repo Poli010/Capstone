@@ -19,3 +19,7 @@ function changepass(){
         submit.click();
     }
 }
+
+function back(email){
+    window.location.href = "endUser_page.php?email=" + email;
+}

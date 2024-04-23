@@ -64,3 +64,7 @@ function hideCancelButton() {
     }
 }
 hideCancelButton();
+
+function back(email){
+    window.location.href = "endUser_page.php?email=" + email;
+}

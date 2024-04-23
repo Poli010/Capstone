@@ -1,8 +1,8 @@
 <?php
     require_once("dbcon.php");
-    $user_id = $_GET['user_id'];
+    $email = $_GET['email'];
 
-    $sql = "SELECT * FROM accounts WHERE user_id = '$user_id'";
+    $sql = "SELECT * FROM accounts WHERE email = '$email'";
     $user = mysqli_query($conn, $sql);
 
     $row = mysqli_fetch_assoc($user);
@@ -20,6 +20,9 @@
 </head>
 <body>
     <div class="container">
+        <div class="header">
+            <img src="icon/icon.png" alt="" width="120" onclick="back('<?php echo $email ?>')">
+        </div>
         <form action="editProfile_function.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="user_id" value="<?php echo $user_id ?>">
             <h1>Edit Profile</h1>
