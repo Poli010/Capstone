@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="account-signup">
-                    <input type="password" name="password" id="password" autocomplete="off" required>
+                    <input type="password" name="password" id="password" min="6" autocomplete="off" required>
                     <label for="password">Password</label>
                 </div>
 
@@ -124,6 +124,12 @@
         <h1>Already Have Account!</h1>
         <p>The email you enter is already exist</p>
         <button class = "ok" onclick = "already_close()">OK</button>
+    </div>
+
+    <div class="password_length" id="password_length">
+        <h1>Password too short</h1>
+        <p>Create password atleast 6 characters</p>
+        <button class = "ok" onclick = "password_close()">OK</button>
     </div>
 
 

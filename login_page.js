@@ -37,6 +37,7 @@ function create_account() {
     var container = document.getElementById("main");
     var form_button = document.getElementById("form_button");
     var already_account = document.getElementById("already_account");
+    var password_length = document.getElementById("password_length");
 
     $.ajax({
         url: "validate_acc.php",
@@ -61,6 +62,10 @@ function create_account() {
                 } 
                 else if (contact_number.length < 11){
                     contact_length.classList.add("open-contact_number-length");
+                    container.classList.add("container-main");
+                }
+                else if(password.length < 6){
+                    password_length.classList.add("password_length-open");
                     container.classList.add("container-main");
                 }
                 else if(password === confirm_password && email.endsWith(lastmail)) {
@@ -92,6 +97,10 @@ function already_close(){
     container.classList.remove("container-main");
 }
 
+function password_close(){
+    password_length.classList.remove("password_length-open");
+    container.classList.remove("container-main");
+}
 
 //FUNCTION FOR ALL ERROR WHEN LOGIN
 window.onload = function() {
