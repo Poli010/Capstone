@@ -96,6 +96,9 @@ function book(user_id){
     let technician_social = document.getElementById('technician_social');
     let technician_location = document.getElementById('technician_location');
     let user_id_hidden = document.getElementById("user_id_hidden");
+    let position = document.getElementById("position");
+    let ipapagawa = document.getElementById("ipapagawa");
+    let ipapagawa2 = document.getElementById("ipapagawa2");
 
     $.ajax({
         url: "book_now.php",
@@ -117,7 +120,9 @@ function book(user_id){
             technician_social.value = response.data.social_media
             technician_location.value = response.data.address + ' ' + response.data.barangay + ' ' + response.data.city + ' ' + response.data.province;
             user_id_hidden.value = response.data.user_id;
+            position.value = response.data.position;
             book_now.classList.add("book-now-open");
+            
             if(time_available.textContent === 'Time Available: '){
                 time_available.textContent = "Time Available: ---";
             }
@@ -234,12 +239,16 @@ function appoint(){
     var fully_book = document.getElementById("fully_book");
     var success_book = document.getElementById("success_book");
     let endUser_email = document.getElementById("endUser_email").value;
-    let ipapagawa= document.getElementById('ipapagawa').value;
+    let ipapagawa = document.getElementById('ipapagawa').value;
+    let ipapagawa2 = document.getElementById('ipapagawa2').value;
+    let others = document.getElementById('others').value;
     var fill_service = document.getElementById('fill_service');
     let service_category = document.getElementById("service_category").value;
     let time = document.getElementById("time").value;
     var time_modal = document.getElementById("time_modal");
     var home_modal = document.getElementById("home_modal");
+   
+    
 
     $.ajax({
         url: "check_appointment.php",
@@ -247,14 +256,15 @@ function appoint(){
         dataType: "json",
         data:{
             technician_email: technician_email,
-            endUser_email: endUser_email
+            endUser_email: endUser_email,
+            date: date
         },
         success: function(response){
             if(date === current_date || date <= current_date){
                 future_date.classList.add("future_date-open");
                 success_modal.classList.remove("success_booking-open");
             } 
-            else if(ipapagawa === ''){
+            else if(ipapagawa === '' && ipapagawa2 === '' && others === ''){
                 fill_service.classList.add("fill_service-open")
                 success_modal.classList.remove("success_booking-open");
             }
@@ -266,6 +276,7 @@ function appoint(){
                 home_modal.classList.add("home_modal-open");
                 success_modal.classList.remove("success_booking-open");
             }
+
             else if(response.success){
                 success_book.classList.add("success_book-open");
                 success_modal.classList.remove("success_booking-open")
@@ -276,8 +287,6 @@ function appoint(){
             }
         },
     });
-    
-
 }
 
 
@@ -329,3 +338,52 @@ function see_comment(){
 
     window.location.href = "review.php?email=" +endUser_email + "&user_id=" + user_id_hidden + "&technician_email=" + technician_email;
 }
+
+window.onload = function() {
+    var position_select = document.getElementById("position_select");
+    var ipapagawa = document.getElementById("ipapagawa");
+    var ipapagawa2 = document.getElementById("ipapagawa2");
+    var others = document.querySelector(".others");
+
+    position_select.addEventListener("change", function() {
+        if (position_select.value === "Electric") {
+            ipapagawa.style.display = "none";
+            others.style.display = "none";
+            ipapagawa2.style.display = "block";
+            
+        } else {
+            others.style.display = "none";
+            ipapagawa.style.display = "block";
+            ipapagawa2.style.display = "none";
+        }
+    });
+};
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var ipapagawa1 = document.getElementById("ipapagawa");
+        var ipapagawa2 = document.getElementById("ipapagawa2");
+        var othersInput = document.querySelector(".others");
+
+        ipapagawa1.addEventListener("change", function() {
+            if (this.value === "Others") {
+                othersInput.style.display = "block";
+                ipapagawa1.style.display = "none";
+                
+            } else {
+                othersInput.style.display = "none";
+                ipapagawa1.style.display = "block";
+            }
+        });
+
+        ipapagawa2.addEventListener("change", function() {
+            if (this.value === "Others") {
+                othersInput.style.display = "block";
+                ipapagawa2.style.display = "none";
+            } else {
+                othersInput.style.display = "none";
+                ipapagawa2.style.display = "block";
+            }
+        });
+    });
+

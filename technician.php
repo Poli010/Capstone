@@ -211,6 +211,12 @@
         <p>The email you enter is already exist</p>
         <button class = "ok" onclick = "already_close()">OK</button>
     </div>
+
+    <div class="password_length" id="password_length">
+        <h1>Password too short</h1>
+        <p>Create password atleast 6 characters</p>
+        <button class = "ok" onclick = "password_close()">OK</button>
+    </div>
 <script src="technician.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </body>

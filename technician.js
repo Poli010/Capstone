@@ -54,6 +54,7 @@ function check(){
     var empty = document.getElementById("empty"); 
     var contact = document.getElementById("contact"); 
     var already_account = document.getElementById("already_account");
+    var password_length = document.getElementById("password_length");
 
     $.ajax({
         url: "validate_acc.php",
@@ -84,6 +85,10 @@ function check(){
                     contact.classList.add("wrong-contact");
                     container.classList.add("container-main");
                 }
+                else if(password.length < 6){
+                    password_length.classList.add("password_length-open");
+                    container.classList.add("container-main");
+                }
                 else if(password === confirm_password){
                     upload_form.click();
                 }
@@ -92,6 +97,11 @@ function check(){
     })
 
     
+}
+
+function password_close(){
+    password_length.classList.remove("password_length-open");
+    container.classList.remove("container-main");
 }
 
 function remove(){

@@ -229,6 +229,7 @@
                 <input type="hidden" value="" name="technician_contact" id="technician_contact"> 
                 <input type="hidden" name="endUser_contact" value="<?php echo $row2['contact_number'] ?>">
                 <input type="hidden" value="" name="technician_social" id="technician_social"> 
+                <input type="hidden" value="" name="position" id="position"> 
                 <input type="hidden" value="" name="technician_name" id="technician_name"> 
                 <input type="hidden" value="<?php echo $row2['first_name'] ?> <?php echo $row2['last_name'] ?>" name="endUser_name" id="endUser_name"> 
                 <input type="hidden" value="Pending..." name="pending" id="pending">
@@ -240,6 +241,13 @@
                 <!------>
                 <h1>Set your Appointment</h1>
                 <div class="info">
+                    <div class="problem_type">
+                        <label for="">Problem type?</label>
+                        <select name="" id="position_select">
+                            <option value="Computer">Computer </option>
+                            <option value="Electric">Electric</option>
+                        </select>
+                    </div>
                     <div class="date">
                         <label for="date">Date:</label>
                         <input type="date" id="date" name="date" required>
@@ -258,8 +266,49 @@
                     </div>
                     <div class="service">
                         <label for="ipapagawa">Service Request:</label>
-                        <textarea id="ipapagawa" name="ipapagawa" cols="30" rows="10" required></textarea>
+                        <select name="ipapagawa" id="ipapagawa">
+                            <option value=""></option>
+                            <option value="Hardware Installation/Upgrades">Hardware Installation/Upgrades</option>
+                            <option value="Software Installation/Configuration">Software Installation/Configuration</option>
+                            <option value="Virus/Malware Removal">Virus/Malware Removal</option>
+                            <option value="Data Backup/Recovery">Data Backup/Recovery</option>
+                            <option value="Network Setup/Configuration">Network Setup/Configuration</option>
+                            <option value="Printer/Peripheral Setup">Printer/Peripheral Setup</option>
+                            <option value="System Performance Optimization">System Performance Optimization</option>
+                            <option value="Hardware Diagnostics/Repair">Hardware Diagnostics/Repair</option>
+                            <option value="Password Recovery/Reset">Password Recovery/Reset</option>
+                            <option value="Email/Communication Setup">Email/Communication Setup</option>
+                            <option value="Security Audits/Assessment">Security Audits/Assessment</option>
+                            <option value="Remote Desktop Support">Remote Desktop Support</option>
+                            <option value="Training and Consultation">Training and Consultation</option>
+                            <option value="System Updates/Patching">System Updates/Patching</option>
+                            <option value="General Technical Support">General Technical Support</option>
+                            <option value="Others">Others</option>
+                        </select>
+                        <select name="ipapagawa2" id="ipapagawa2">
+                            <option value=""></option>
+                            <option value="Electrical Installation">Electrical Installation</option>
+                            <option value="Electrical Repairs">Electrical Repairs</option>
+                            <option value="Electrical Upgrades">Electrical Upgrades</option>
+                            <option value="Appliance Installation">Appliance Installation</option>
+                            <option value="Lighting Installation/Repair">Lighting Installation/Repair</option>
+                            <option value="Electrical Safety Inspections">Electrical Safety Inspections</option>
+                            <option value="Generator Installation/Repair">Generator Installation/Repair</option>
+                            <option value="Security System Wiring">Security System Wiring</option>
+                            <option value="Data and Communication Wiring">Data and Communication Wiring</option>
+                            <option value="Electrical Troubleshooting">Electrical Troubleshooting</option>
+                            <option value="Electrical Panel Upgrades">Electrical Panel Upgrades</option>
+                            <option value="Electrical Code Compliance">Electrical Code Compliance</option>
+                            <option value="Emergency Electrical Services">Emergency Electrical Services</option>
+                            <option value="Tenant Improvements">Tenant Improvements</option>
+                            <option value="Home Automation Installation">Home Automation Installation</option>
+                            <option value="Others">Others</option>
+                        </select>
                     </div>
+              
+                    
+          
+                    <input type="text" id="others" name="ipapagawa3" class="others" placeholder="Type your service request">
                 </div>
                 <div class="buttons">
                     <input type="submit" name="submit" id="submit">

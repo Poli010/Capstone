@@ -457,3 +457,24 @@ body {
     transform: translate(-50%)scale(1);
     visibility: visible;
 }
+
+.password_length{
+    position: absolute;
+    text-align: center;
+    width: 500px;
+    height: 130px;
+    background: rgb(82, 72, 72);
+    border: 1px solid black;
+    border-radius: 5px;
+    z-index: 999;
+    left: 50%;
+    color: white;
+    visibility: hidden;
+    transform: translate(-50%)scale(0.1);
+    transition: 0.5s;
+}
+
+.password_length-open{
+    transform: translate(-50%)scale(1);
+    visibility: visible;
+}

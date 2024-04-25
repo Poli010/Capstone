@@ -18,7 +18,18 @@
         $technician_social = $_POST['technician_social'];
         $time = $_POST['time'];
         $date = $_POST['date'];
-        $service = $_POST['ipapagawa'];
+
+        // Collect service values into an array
+        $service_values = array($_POST['ipapagawa'], $_POST['ipapagawa2'], $_POST['ipapagawa3']);
+
+        // Remove "Others" if present
+        $service_values = array_filter($service_values, function($value) {
+            return $value !== "Others";
+        });
+
+        // Implode the remaining values
+        $service = implode($service_values);
+
         $pending = $_POST['pending'];
         $service_category = $_POST['service_category'];
         $endUser_contact = $_POST['endUser_contact'];
