@@ -13,6 +13,7 @@
         $last_name = $_POST['last_name'];
         $email = $_POST['email'];
         $username = $_POST['username'];
+        $address = $_POST['address'];
         $contact_number = $_POST['contact_number'];
         $password = $_POST['password'];
         $verification = mt_rand(100000, 999999);
@@ -20,7 +21,7 @@
         $default_picture = 'icon/icon.png';
         $approved = 'yes';
 
-        $sql = "INSERT INTO accounts VALUES('','$account_type','$first_name','$last_name','$email','$username','$contact_number','$password','$verification','','$user_id','$approved','$default_picture')";
+        $sql = "INSERT INTO accounts VALUES('','$account_type','$first_name','$last_name','$email','$username','$address','$contact_number','$password','$verification','','$user_id','$approved','$default_picture')";
         $query = mysqli_query($conn, $sql);
 
         if($query){

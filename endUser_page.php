@@ -227,6 +227,7 @@
             <form action="book_appointment.php" method="post">
                 <!-----DATA----->
                 <input type="hidden" value="" name="technician_contact" id="technician_contact"> 
+                <input type="hidden" name="endUser_address" value="<?php echo $row2['address'] ?>">
                 <input type="hidden" name="endUser_contact" value="<?php echo $row2['contact_number'] ?>">
                 <input type="hidden" value="" name="technician_social" id="technician_social"> 
                 <input type="hidden" value="" name="position" id="position"> 

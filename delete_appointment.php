@@ -3,8 +3,9 @@
 
     if($_SERVER["REQUEST_METHOD"]==="GET"){
         $technician_email = $_GET['technician_email'];
+        $transaction_number = $_GET['transaction_number'];
 
-        $sql = "SELECT * FROM appointment_list WHERE technician_email = '$technician_email'";
+        $sql = "SELECT * FROM appointment_list WHERE technician_email = '$technician_email' AND transaction_number = '$transaction_number'";
         $query = mysqli_query($conn, $sql);
 
         if($query){

@@ -179,7 +179,7 @@ body {
 }
 
 .account-signup input{
-    height: 35px;
+    height: 30px;
     width: 250px;
     outline: none;
     padding: 0 10px;
@@ -203,7 +203,7 @@ body {
 
 .create_account{
     position: relative;
-    top: -40px;
+    top: -35px;
     left: 140px;
     height: 29px;
     width: 110px;

@@ -1,8 +1,9 @@
 //FUNCTION FOR ARROW 
-function show(id, iconId,technician_email,email){
+function show(id, iconId,technician_email,email,transaction_number){
     let message_collapse = document.getElementById(id);
     let icon = document.getElementById(iconId);
     let techa = document.getElementById("techa");
+    let transaction = document.getElementById("transaction");
     let endUser_email = document.getElementById("endUser_email");
 
     message_collapse.classList.toggle('message-open');
@@ -13,10 +14,12 @@ function show(id, iconId,technician_email,email){
         dataType: "json",
         data:{
             technician_email: technician_email,
-            email: email
+            email: email, 
+            transaction_number: transaction_number
         },
         success: function(response){
             techa.value = response.data.technician_email;
+            transaction.value = response.data.transaction_number;
             endUser_email.value = response.data.endUser_email;
            
         }

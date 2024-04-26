@@ -10,6 +10,7 @@
     if(isset($_POST['submit'])){
         $endUser_email = $_POST['endUser_email'];
         $endUser_name = $_POST['endUser_name'];
+        $endUser_address = $_POST['endUser_address'];
         $endUser_message = $_POST['endUser_message'];
         $technician_email = $_POST['technician_email'];
         $technician_name = $_POST['technician_name'];
@@ -34,7 +35,9 @@
         $service_category = $_POST['service_category'];
         $endUser_contact = $_POST['endUser_contact'];
         
-        $sql = "INSERT INTO appointment_list VALUES('','$endUser_email','$endUser_name','$endUser_message','$endUser_contact','$technician_email','$technician_name','$technician_message','$technician_contact','$technician_social','$time','$date','$service','$pending','$service_category')";
+        $transaction_number = 'TR-' . substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 5) . rand(10000, 99999);
+
+        $sql = "INSERT INTO appointment_list VALUES('','$endUser_email','$endUser_name','$endUser_address','$endUser_message','$endUser_contact','$technician_email','$technician_name','$technician_message','$technician_contact','$technician_social','$time','$date','$service','$pending','$service_category','$transaction_number')";
         $query = mysqli_query($conn, $sql);
 
         if($query){

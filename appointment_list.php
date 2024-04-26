@@ -4,7 +4,14 @@
 
     $sql = "SELECT * FROM appointment_list WHERE technician_email = '$email'";
     $query = mysqli_query($conn, $sql);
+   
+    if($query){
+        $select = "SELECT * FROM appointment_list WHERE technician_email = '$email'";
+        $select_query = mysqli_query($conn, $select);
 
+        $row2 = mysqli_fetch_assoc($select_query);
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +46,7 @@
             <p><?php echo date('h:i A', strtotime($row['time'])); ?> </p>
             <p id="status"><?php echo $row['status'] ?></p>
             <p><?php echo $row['type_of_service'] ?></p>
-            <button class="action_btn" onclick="show('message_collapse_<?php echo $row['id']; ?>','icon_<?php echo $row['id']; ?>','<?php echo $row['technician_email'] ?>','<?php echo $email ?>')"><i id="icon_<?php echo $row['id']; ?>" class="fa-solid fa-arrow-down"></i></button>
+            <button class="action_btn" onclick="show('message_collapse_<?php echo $row['id']; ?>','icon_<?php echo $row['id']; ?>','<?php echo $row['technician_email'] ?>','<?php echo $email ?>','<?php echo $row ['transaction_number']?>')"><i id="icon_<?php echo $row['id']; ?>" class="fa-solid fa-arrow-down"></i></button>
         </div>
         <div class="message" id="message_collapse_<?php echo $row['id']; ?>">
             <p><?php echo $row['technician_message'] ?> <?php echo $row['service'] ?></p>
@@ -66,15 +73,17 @@
         <div class="modal_button">
             <button type="button" class="btnYes" onclick="delete_book()">Yes</button>
             <button class="btnNo" type="button" onclick="close_modal()">No</button>
+            <input type="text" name="techa" id="techa" value="">
         </div>
     </div>
     <div class="reason" id="reason">
         <div class="reason_info">
             <h1>Reason why you cancel your book?</h1>
             <form action="appointment_List_cancel_book.php" method="post">
-                <input type="hidden" name="techa" id="techa" value="">
+                <input type="text" name="techa" id="techa" value="">
+                <input type="text" name="transaction" id="transaction" value="<?php echo $row2['transaction_number'] ?>"> 
                 <input type="hidden" name="endUser_email" id="endUser_email" value="<?php echo $email ?>">
-                <input type="hidden" name="endUser_name" value="<?php echo $row2['endUser_name'] ?>">
+                <input type="text" name="endUser_name" value="<?php echo $row2['endUser_name'] ?>">
                 <textarea name="reason_cancel" id="" cols="30" rows="10"></textarea><br>
                 <button type="submit" name="submit" class="cancel">Cancel Book</button>
                 <button type="button" class="close" onclick="close_reason()">Close</button>

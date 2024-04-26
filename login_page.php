@@ -66,6 +66,11 @@
                 </div>
 
                 <div class="account-signup">
+                    <input type="text" name="address" autocomplete="off" required>
+                    <label for="address">Adress (Complete address)</label>
+                </div>
+
+                <div class="account-signup">
                     <input type="text" name="contact_number" autocomplete="off" id="contact_number" required >
                     <label for="contact_number">Contact Number(09----)</label>
                 </div>
