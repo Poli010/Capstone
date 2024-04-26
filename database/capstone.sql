@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2024 at 06:10 AM
+-- Generation Time: Apr 26, 2024 at 04:49 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -54,6 +54,7 @@ CREATE TABLE `accounts` (
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
   `contact_number` bigint(20) NOT NULL,
   `password` varchar(255) NOT NULL,
   `verification_code` varchar(255) NOT NULL,
@@ -67,16 +68,18 @@ CREATE TABLE `accounts` (
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `account_type`, `first_name`, `last_name`, `email`, `username`, `contact_number`, `password`, `verification_code`, `verification_complete`, `user_id`, `approved`, `profile_picture`) VALUES
-(1, 'admin', 'Admin', 'Admin', 'admin@gmail.com', 'Admin', 9485905921, '123', '123456', '123456', '', 'yes', ''),
-(2, 'end_user', 'Dianne', 'Castiilo', 'diannecastillo227@gmail.com', 'suzzane28', 9163812102, 'suzzane', '418727', '418727', 'userID-661e0a9e70e88', 'yes', 'icon/icon.png'),
-(3, 'technician', 'felicita', 'lamela', 'felicitalamela01@gmail.com', 'felicitalamela', 9998765421, 'lamela2001', '704686', '704686', 'userID-661e0ce28db94', 'yes', 'profile_picture/1-intro-photo-final.jpg'),
-(5, 'end_user', 'Mark', 'Guerrero', 'markguererro202138@gmail.com', 'marckopogi', 9066213298, 'marcko1982', '691263', '', 'userID-661f2c8213c8f', 'yes', 'icon/icon.png'),
-(6, 'end_user', 'Mark', 'Guerrero', 'markguerrero202138@gmail.com', 'marckopogi', 9066213298, 'marcko1982', '179610', '179610', 'userID-661f2cfddee4e', 'yes', 'icon/icon.png'),
-(7, 'end_user', 'Angelo ', 'Capa', 'rurilhayne@gmail.com', 'Clips', 9858133048, '123123', '517821', '568351', 'userID-661f2d0f265ec', 'yes', 'icon/icon.png'),
-(9, 'technician', 'Mark', 'Guerrero', 'markguerrero202239@gmail.com', 'mark01', 9974784973, '12345', '221975', '221975', 'userID-661f305dbfa89', 'yes', 'profile_picture/MSCpE.jpg'),
-(10, 'technician', 'ivan', 'policarpio', 'ivanpolicarpio015@gmail.com', 'poli', 9485905921, 'Policarpio0123', '194895', '194895', 'userID-6629baa8385b3', 'yes', 'profile_picture/fb.jpg'),
-(11, 'end_user', 'andrea ivy', 'policarpio', 'andeng@gmail.com', 'andeng', 9485950112, 'andeng123', '897982', '897982', 'userID-6629bb142cb49', 'yes', 'icon/icon.png');
+INSERT INTO `accounts` (`id`, `account_type`, `first_name`, `last_name`, `email`, `username`, `address`, `contact_number`, `password`, `verification_code`, `verification_complete`, `user_id`, `approved`, `profile_picture`) VALUES
+(1, 'admin', 'Admin', 'Admin', 'admin@gmail.com', 'Admin', '', 9485905921, '123', '123456', '123456', '', 'yes', ''),
+(2, 'end_user', 'Dianne', 'Castiilo', 'diannecastillo227@gmail.com', 'suzzane28', '', 9163812102, 'suzzane', '418727', '418727', 'userID-661e0a9e70e88', 'yes', 'icon/icon.png'),
+(3, 'technician', 'felicita', 'lamela', 'felicitalamela01@gmail.com', 'felicitalamela', '', 9998765421, 'lamela2001', '704686', '704686', 'userID-661e0ce28db94', 'yes', 'profile_picture/1-intro-photo-final.jpg'),
+(5, 'end_user', 'Mark', 'Guerrero', 'markguererro202138@gmail.com', 'marckopogi', '', 9066213298, 'marcko1982', '691263', '', 'userID-661f2c8213c8f', 'yes', 'icon/icon.png'),
+(6, 'end_user', 'Mark', 'Guerrero', 'markguerrero202138@gmail.com', 'marckopogi', '', 9066213298, 'marcko1982', '179610', '179610', 'userID-661f2cfddee4e', 'yes', 'icon/icon.png'),
+(7, 'end_user', 'Angelo ', 'Capa', 'rurilhayne@gmail.com', 'Clips', '', 9858133048, '123123', '517821', '568351', 'userID-661f2d0f265ec', 'yes', 'icon/icon.png'),
+(9, 'technician', 'Mark', 'Guerrero', 'markguerrero202239@gmail.com', 'mark01', '', 9974784973, '12345', '221975', '221975', 'userID-661f305dbfa89', 'yes', 'profile_picture/MSCpE.jpg'),
+(10, 'technician', 'ivan', 'policarpio', 'ivanpolicarpio015@gmail.com', 'poli', '', 9485905921, 'Policarpio0123', '194895', '194895', 'userID-6629baa8385b3', 'yes', 'profile_picture/fb.jpg'),
+(11, 'end_user', 'andrea ivy', 'policarpio', 'andeng@gmail.com', 'andeng', '', 9485950112, 'andeng123', '897982', '897982', 'userID-6629bb142cb49', 'yes', 'icon/icon.png'),
+(12, 'end_user', 'Baho', 'bilat', 'clipsampochi@gmail.com', 'bahobilat', 'blk 30 lot 50 san rafael 1 area h', 99120390912, '123123', '489659', '489659', 'userID-6629e1a9bb640', 'yes', 'icon/icon.png'),
+(13, 'end_user', 'Gwenh Alexis', 'De Jesus', 'gwenhalexisdejesus942@gmail.com', 'alex', 'alam mo yun', 9215946612, 'liittotoy', '167727', '167727', 'userID-662a5ebd1bde1', 'yes', 'icon/icon.png');
 
 -- --------------------------------------------------------
 
@@ -88,6 +91,7 @@ CREATE TABLE `appointment_list` (
   `id` int(11) NOT NULL,
   `endUser_email` varchar(255) NOT NULL,
   `endUser_name` varchar(255) NOT NULL,
+  `endUser_address` varchar(255) NOT NULL,
   `endUser_message` varchar(255) NOT NULL,
   `end_user_contact` bigint(11) NOT NULL,
   `technician_email` varchar(255) NOT NULL,
@@ -99,24 +103,17 @@ CREATE TABLE `appointment_list` (
   `date` varchar(255) NOT NULL,
   `service` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
-  `type_of_service` varchar(255) NOT NULL
+  `type_of_service` varchar(255) NOT NULL,
+  `transaction_number` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `appointment_list`
 --
 
-INSERT INTO `appointment_list` (`id`, `endUser_email`, `endUser_name`, `endUser_message`, `end_user_contact`, `technician_email`, `technician_name`, `technician_message`, `technician_contact`, `technician_social`, `time`, `date`, `service`, `status`, `type_of_service`) VALUES
-(13, 'andeng@gmail.com ', 'andrea ivy policarpio', 'Your appointment is accepted, please check your contact info if the technician contact you', 9485950112, 'ivanpolicarpio015@gmail.com', 'ivan policarpio', 'Hi i have a problem can you help me to fix my: ', 9485905921, 'fb.com', '10:14', '2024-04-26', 'Hardware Installation/Upgrades, , ', 'accepted', 'Walk In'),
-(14, 'andeng@gmail.com ', 'andrea ivy policarpio', 'Your appointment is accepted, please check your contact info if the technician contact you', 9485950112, 'ivanpolicarpio015@gmail.com', 'ivan policarpio', 'Hi i have a problem can you help me to fix my: ', 9485905921, 'fb.com', '10:14', '2024-04-26', 'Software Installation/Configuration', 'accepted', 'Home Service'),
-(15, 'andeng@gmail.com ', 'andrea ivy policarpio', 'Your appointment is accepted, please check your contact info if the technician contact you', 9485950112, 'ivanpolicarpio015@gmail.com', 'ivan policarpio', 'Hi i have a problem can you help me to fix my: ', 9485905921, 'fb.com', '22:15', '2024-04-26', 'Electrical Installation', 'accepted', 'Walk In'),
-(16, 'andeng@gmail.com ', 'andrea ivy policarpio', 'Your appointment is accepted, please check your contact info if the technician contact you', 9485950112, 'ivanpolicarpio015@gmail.com', 'ivan policarpio', 'Hi i have a problem can you help me to fix my: ', 9485905921, 'fb.com', '10:15', '2024-04-26', 'laptop', 'accepted', 'Walk In'),
-(17, 'andeng@gmail.com ', 'andrea ivy policarpio', 'Your appointment is accepted, please check your contact info if the technician contact you', 9485950112, 'ivanpolicarpio015@gmail.com', 'ivan policarpio', 'Hi i have a problem can you help me to fix my: ', 9485905921, 'fb.com', '10:16', '2024-04-27', 'jumper', 'accepted', 'Home Service'),
-(18, 'andeng@gmail.com ', 'andrea ivy policarpio', 'Your appointment is accepted, please check your contact info if the technician contact you', 9485950112, 'ivanpolicarpio015@gmail.com', 'ivan policarpio', 'Hi i have a problem can you help me to fix my: ', 9485905921, 'fb.com', '10:28', '2024-04-26', '', 'accepted', 'Walk In'),
-(19, 'andeng@gmail.com ', 'andrea ivy policarpio', 'Your appointment is accepted, please check your contact info if the technician contact you', 9485950112, 'ivanpolicarpio015@gmail.com', 'ivan policarpio', 'Hi i have a problem can you help me to fix my: ', 9485905921, 'fb.com', '10:29', '2024-04-26', '', 'accepted', 'Walk In'),
-(20, 'andeng@gmail.com ', 'andrea ivy policarpio', 'Your appointment is accepted, please check your contact info if the technician contact you', 9485950112, 'ivanpolicarpio015@gmail.com', 'ivan policarpio', 'Hi i have a problem can you help me to fix my: ', 9485905921, 'fb.com', '10:32', '2024-04-26', 'Virus/Malware Removal', 'accepted', 'Walk In'),
-(21, 'andeng@gmail.com ', 'andrea ivy policarpio', 'Your appointment is accepted, please check your contact info if the technician contact you', 9485950112, 'ivanpolicarpio015@gmail.com', 'ivan policarpio', 'Hi i have a problem can you help me to fix my: ', 9485905921, 'fb.com', '10:33', '2024-04-26', 'Tenant Improvements', 'accepted', 'Walk In'),
-(22, 'andeng@gmail.com ', 'andrea ivy policarpio', 'Your appointment is accepted, please check your contact info if the technician contact you', 9485950112, 'ivanpolicarpio015@gmail.com', 'ivan policarpio', 'Hi i have a problem can you help me to fix my: ', 9485905921, 'fb.com', '10:34', '2024-04-27', 'System Updates/Patching', 'accepted', 'Walk In');
+INSERT INTO `appointment_list` (`id`, `endUser_email`, `endUser_name`, `endUser_address`, `endUser_message`, `end_user_contact`, `technician_email`, `technician_name`, `technician_message`, `technician_contact`, `technician_social`, `time`, `date`, `service`, `status`, `type_of_service`, `transaction_number`) VALUES
+(65, 'gwenhalexisdejesus942@gmail.com ', 'Gwenh Alexis De Jesus', 'alam mo yun', 'Please wait to technician to accept your appointment', 9215946612, 'ivanpolicarpio015@gmail.com', 'ivan policarpio', 'Hi i have a problem can you help me to fix my: ', 9485905921, 'fb.com', '10:10', '2024-04-27', 'Data Backup/Recovery', 'Pending...', 'Walk In', 'TR-EHBSV71845'),
+(66, 'gwenhalexisdejesus942@gmail.com ', 'Gwenh Alexis De Jesus', 'alam mo yun', 'Please wait to technician to accept your appointment', 9215946612, 'ivanpolicarpio015@gmail.com', 'ivan policarpio', 'Hi i have a problem can you help me to fix my: ', 9485905921, 'fb.com', '10:10', '2024-04-27', 'System Performance Optimization', 'Pending...', 'Walk In', 'TR-PKRNS35243');
 
 -- --------------------------------------------------------
 
@@ -130,6 +127,26 @@ CREATE TABLE `chats` (
   `technician_message` varchar(1000) NOT NULL,
   `end_user_message` varchar(1000) NOT NULL,
   `date_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `id` int(11) NOT NULL,
+  `endUser_email` varchar(255) NOT NULL,
+  `endUser_name` varchar(255) NOT NULL,
+  `endUser_address` varchar(255) NOT NULL,
+  `endUser_contact` bigint(11) NOT NULL,
+  `time` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `service` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `type_of_service` varchar(255) NOT NULL,
+  `transaction_number` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -155,10 +172,9 @@ CREATE TABLE `ongoing_appointment` (
 --
 
 INSERT INTO `ongoing_appointment` (`id`, `endUser_email`, `endUser_name`, `endUser_contact`, `technician_email`, `date`, `time`, `status`, `type_of_service`) VALUES
-(26, 'andeng@gmail.com ', 'andrea ivy policarpio', 9485950112, 'ivanpolicarpio015@gmail.com', '2024-04-26', '10:14', 'Ongoing', 'Walk In'),
-(27, 'andeng@gmail.com ', 'andrea ivy policarpio', 9485950112, 'ivanpolicarpio015@gmail.com', '2024-04-26', '10:32', 'Ongoing', 'Walk In'),
-(28, 'andeng@gmail.com ', 'andrea ivy policarpio', 9485950112, 'ivanpolicarpio015@gmail.com', '2024-04-26', '10:33', 'Ongoing', 'Walk In'),
-(29, 'andeng@gmail.com ', 'andrea ivy policarpio', 9485950112, 'ivanpolicarpio015@gmail.com', '2024-04-27', '10:34', 'Ongoing', 'Walk In');
+(40, 'clipsampochi@gmail.com ', 'Baho bilat', 99120390912, 'ivanpolicarpio015@gmail.com', '2024-04-26', '21:11', 'Ongoing', 'Home Service'),
+(41, 'clipsampochi@gmail.com ', 'Baho bilat', 99120390912, 'ivanpolicarpio015@gmail.com', '2024-04-26', '21:26', 'Ongoing', 'Walk In'),
+(42, 'gwenhalexisdejesus942@gmail.com ', 'Gwenh Alexis De Jesus', 9215946612, 'ivanpolicarpio015@gmail.com', '2024-04-27', '21:42', 'Ongoing', 'Walk In');
 
 -- --------------------------------------------------------
 
@@ -44227,6 +44243,12 @@ ALTER TABLE `appointment_list`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `history`
+--
+ALTER TABLE `history`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `ongoing_appointment`
 --
 ALTER TABLE `ongoing_appointment`
@@ -44282,19 +44304,25 @@ ALTER TABLE `able_comment`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `appointment_list`
 --
 ALTER TABLE `appointment_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+
+--
+-- AUTO_INCREMENT for table `history`
+--
+ALTER TABLE `history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ongoing_appointment`
 --
 ALTER TABLE `ongoing_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `philippine_barangays`
