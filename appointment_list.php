@@ -56,6 +56,8 @@
                 <input type="hidden" id="accepted" value="accepted">
                 <p><i class="fa-solid fa-phone"></i> +63<?php echo $row['end_user_contact'] ?></p>
                 <p><i class="fa-solid fa-envelope"></i> <?php echo $row['endUser_email'] ?></p>
+                <button class="seeLocation" onclick="seeLocation()">See Location <i class="fa-solid fa-location-dot"></i></button>
+                            <input type="hidden" id="technician_location" value="<?php echo $row['endUser_address']?>">
                 <!--<button class="chatBtn" onclick="chats('<?php echo $row['endUser_email'] ?>')">Chat</button>-->
                 <button class="acceptBtn" id="acceptBtn" onclick="accept('<?php echo $row['type_of_service']; ?>','<?php echo $row['end_user_contact']; ?>','<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')">Accept</button>
                 <button class="cancelBtn" onclick="cancelbook()">Cancel Book</button>

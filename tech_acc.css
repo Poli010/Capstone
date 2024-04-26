@@ -19,6 +19,7 @@ body {
 .main-content {
     flex: 1;
     padding: 20px;
+   
 }
 .sidebar {
     width: 100px;
@@ -55,7 +56,7 @@ hr{
     width: 70%
 }
 .info{
-    margin-top: 40px;
+    margin-top: 5px;
     margin-left: 220px;
     border: 1px solid black;
     border-radius: 10px;

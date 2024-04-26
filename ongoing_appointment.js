@@ -1,48 +1,77 @@
-//FUNCTION FOR ARROW 
-function show(id, iconId,technician_email,email){
-    let message_collapse = document.getElementById(id);
-    let icon = document.getElementById(iconId);
-    let techa = document.getElementById("techa");
-    let endUser_email = document.getElementById("endUser_email");
 
-    message_collapse.classList.toggle('message-open');
+function show(id, iconId, technician_email, email) {
+    let messageCollapse = document.getElementById(id);
+    let icon = document.getElementById(iconId);
+    let techa = document.getElementById("cancelTecha");
+    let endUserEmail = document.getElementById("cancelEndUserEmail");
+
+    messageCollapse.classList.toggle('message-open');
     icon.classList.toggle('fa-solid-open');
     $.ajax({
         url: "delete_appointment.php",
         type: "GET",
         dataType: "json",
-        data:{
+        data: {
             technician_email: technician_email,
             email: email
         },
-        success: function(response){
+        success: function (response) {
             techa.value = response.data.technician_email;
-            endUser_email.value = response.data.endUser_email;
-           
+            endUserEmail.value = response.data.endUser_email;
         }
     })
 }
 
-
-
-//FUNCTION FOR CANCEL BOOK BUTTON
-function cancelbook(){
+function cancelBook() {
     var container = document.getElementById("container");
-    var cancel_modal = document.getElementById("cancel_modal");
+    var cancelModal = document.getElementById("cancelModal");
 
     container.classList.add("container-open");
-    cancel_modal.classList.add("cancel_modal-open");
+    cancelModal.classList.add("cancel_modal-open");
 }
 
-function close_modal(){
+function close_modal() {
+    var container = document.getElementById("container");
+    var cancelModal = document.getElementById("cancelModal");
+
     container.classList.remove("container-open");
-    cancel_modal.classList.remove("cancel_modal-open");
+    cancelModal.classList.remove("cancel_modal-open");
 }
-
-//FUNCTION FOR COMPLETE BUTTON
 
 function accept(type_of_service, endUserEmail, endUserName, technicianEmail, date, time, appointmentId) {
     var price = document.getElementById('priceInput').value.trim();
+    var confirmModal = document.getElementById('confirmModal');
+
+    document.getElementById('confirmModalMessage').innerText = "Are you sure that you input the right amount?";
+    confirmModal.style.display = 'block';
+
+    document.getElementById('type_of_service').value = type_of_service;
+    document.getElementById('endUser_email').value = endUserEmail;
+    document.getElementById('endUser_name').value = endUserName;
+    document.getElementById('technician_email').value = technicianEmail;
+    document.getElementById('date').value = date;
+    document.getElementById('time').value = time;
+    document.getElementById('appointmentId').value = appointmentId;
+}
+
+function completeTransaction() {
+    var price = document.getElementById('confirmAmountInput').value.trim();
+    var confirmModal = document.getElementById('confirmModal');
+    var priceModal = document.getElementById('priceModal');
+
+    var type_of_service = document.getElementById('type_of_service').value;
+    var endUserEmail = document.getElementById('endUser_email').value;
+    var endUserName = document.getElementById('endUser_name').value;
+    var technicianEmail = document.getElementById('technician_email').value;
+    var date = document.getElementById('date').value;
+    var time = document.getElementById('time').value;
+    var appointmentId = document.getElementById('appointmentId').value;
+
+    if (price === '') {
+        priceModal.style.display = 'block'; // Show the price modal
+        return; // Stop further execution if price is empty
+    }
+
     $.ajax({
         url: "complete_transaction.php",
         type: "POST",
@@ -56,59 +85,58 @@ function accept(type_of_service, endUserEmail, endUserName, technicianEmail, dat
             price: price,
             type_of_service: type_of_service
         },
-        success: function(response) {
-         location.reload();
+        success: function (response) {
+            location.reload();
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error(xhr.responseText);
-            alert("Error accepting appointment. Please try again.");
+            alert("Error completing transaction. Please try again.");
         }
     });
+
+    confirmModal.style.display = 'none';
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+// Function to close the price modal
+function closePriceModal() {
+    var priceModal = document.getElementById('priceModal');
+    priceModal.style.display = 'none';
+}
+document.addEventListener("DOMContentLoaded", function () {
     var confirmModal = document.getElementById('confirmModal');
-    confirmModal.style.display = 'none'; 
-
-    
     var completeButton = document.querySelector('.acceptBtn');
-    completeButton.addEventListener('click', function() {
+
+    completeButton.addEventListener('click', function () {
         var priceInput = document.getElementById('priceInput').value.trim();
-        
-      
+
         if (priceInput === '') {
-       
-            document.getElementById('modalMessage').innerText = "Please enter the price before completing the transaction.";
+            document.getElementById('confirmModalMessage').innerText = "Please enter the price before completing the transaction.";
             confirmModal.style.display = 'block';
         } else {
-            
-            document.getElementById('modalMessage').innerText = "Are you sure that you input the right amount?";
+            document.getElementById('confirmModalMessage').innerText = "Are you sure that you input the right amount?";
             confirmModal.style.display = 'block';
         }
     });
 });
 
-//function for price//
-function togglePrice() {
-    var priceInput = document.getElementById('priceInput');
-    if (priceInput.style.display === "none") {
-        priceInput.style.display = "block";
-    } else {
-        priceInput.style.display = "none";
-    }
+function showConfirmModal() {
+    var modal = document.getElementById("confirmModal");
+    var modalContent = document.querySelector(".modal-content");
+
+    var viewportWidth = window.innerWidth;
+    var viewportHeight = window.innerHeight;
+    var modalWidth = modalContent.offsetWidth;
+    var modalHeight = modalContent.offsetHeight;
+    var modalLeft = (viewportWidth - modalWidth) / 2;
+    var modalTop = (viewportHeight - modalHeight) / 2;
+
+    modal.style.left = modalLeft + "px";
+    modal.style.top = modalTop + "px";
+
+    modal.style.display = "block";
 }
 
-
-
-var priceInput = document.getElementById('priceInput');
-var completeButton = document.querySelector('.acceptBtn');
-
-
-priceInput.addEventListener('input', function() {
-
-    if (priceInput.value.trim() !== '') {
-        completeButton.disabled = false;
-    } else {
-        completeButton.disabled = true;
-    }
-});
+function closeConfirmModal() {
+    var modal = document.getElementById("confirmModal");
+    modal.style.display = "none";
+}

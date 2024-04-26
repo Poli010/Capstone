@@ -96,3 +96,17 @@ function hideAcceptButton() {
     }
 }
 hideAcceptButton();
+
+//FUNCTION FOR SEE THE LOCATION OF TECHNICIAN
+function seeLocation(){
+    let technician_location = document.getElementById("technician_location").value;
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            let currentLatitude = position.coords.latitude;
+            let currentLongitude = position.coords.longitude;
+            let googleMapsUrl = "https://www.google.com/maps/dir/?api=1&origin=" + currentLatitude + "," + currentLongitude + "&destination=" + encodeURIComponent(technician_location);
+
+            window.open(googleMapsUrl, "_blank");
+        });
+    }
+}

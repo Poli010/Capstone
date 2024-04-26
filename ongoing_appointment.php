@@ -1,10 +1,9 @@
 <?php
-    require_once("dbcon.php");
-    $email = $_GET['email'];
+require_once("dbcon.php");
+$email = $_GET['email'];
 
-    $sql = "SELECT * FROM ongoing_appointment WHERE technician_email = '$email'";
-    $query = mysqli_query($conn, $sql);
-
+$sql = "SELECT * FROM ongoing_appointment WHERE technician_email = '$email'";
+$query = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointment List</title>
+    <title>Ongoing Appointment</title>
     <link rel="website icon" href="icon/icon.png" type="png">
     <link rel="stylesheet" href="ongoing_appointment.css">
     <script src="https://kit.fontawesome.com/355342439a.js" crossorigin="anonymous"></script>
@@ -30,10 +29,9 @@
         </div>
         <hr>
         <?php
-                while($row = mysqli_fetch_assoc($query)){
-            ?>
+        while($row = mysqli_fetch_assoc($query)){
+        ?>
         <div class="info">
-
             <p><?php echo $row['endUser_name'] ?></p>
             <p><?php echo date("F j, Y", strtotime($row['date'])); ?></p>
             <p><?php echo $row['time'] ?> </p>
@@ -42,43 +40,44 @@
             <button class="action_btn" onclick="show('message_collapse_<?php echo $row['id']; ?>','icon_<?php echo $row['id']; ?>','<?php echo $row['technician_email'] ?>','<?php echo $email ?>')"><i id="icon_<?php echo $row['id']; ?>" class="fa-solid fa-arrow-down"></i></button>
         </div>
         <div class="message" id="message_collapse_<?php echo $row['id']; ?>">
-           
             <div class="contact">
                 <p><i class="fa-solid fa-envelope"></i> <?php echo $row['endUser_email'] ?></p>
                 <p><i class="fa-solid fa-phone"></i> +63<?php echo $row['endUser_contact'] ?></p>
-                <button class="priceBtn" onclick="togglePrice()">Price</button>
                 <input type="number" id="priceInput" name="price" placeholder="Enter price" style="display: none;" required>
-                <button class="acceptBtn" onclick="accept('<?php echo $row['type_of_service']; ?>','<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')" disabled>Complete</button>
-                <button class="cancelBtn" onclick="cancelbook()">Cancel Book</button>
+                <button class="acceptBtn" onclick="accept('<?php echo $row['type_of_service']; ?>','<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')">Complete</button>
                 <input type="hidden" id="technician_email" value="<?php echo $row['technician_email'] ?>">
             </div>
-            
         </div>
         <hr>
         <?php
-            }
+        }
         ?>
     </div>
-    <div class="cancel_modal" id="cancel_modal">
-        <h1>Are you sure you want to cancel your book?</h1>
-        <div class="modal_button">
-            <form action="appointment_cancelBook.php" method="post">
-                <button class="btnYes" name="submit" onclick="delete_book()">Yes</button>
-                <button class="btnNo" type="button" onclick="close_modal()">No</button>
-                <input type="hidden" name="techa" id="techa" value="">
-                <input type="hidden" name="endUser_email" id="endUser_email" value="">
-            </form>
-        </div>
-    </div>
-    <div id="confirmModal" class="modal">
+</div>
+<div id="confirmModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <p>Are you sure that you input the right amount?</p>
-        <button onclick="completeTransaction()">OK</button>
+        <span class="close" onclick="closeConfirmModal()">&times;</span>
+        <p id="confirmModalMessage">Are you sure that you input the right amount?</p>
+        <input type="text" id="confirmAmountInput" placeholder="Enter amount" required>
+        <button id="confirmOkBtn" onclick="completeTransaction()">OK</button>
     </div>
 </div>
+<div id="priceModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePriceModal()">&times;</span>
+        <p>Please input the price before completing this transaction.</p>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="ongoing_appointment.js"></script>
 </body>
 </html>
+
+<!-- Hidden fields to store data temporarily -->
+<input type="hidden" id="type_of_service" value="">
+<input type="hidden" id="endUser_email" value="">
+<input type="hidden" id="endUser_name" value="">
+<input type="hidden" id="technician_email" value="">
+<input type="hidden" id="date" value="">
+<input type="hidden" id="time" value="">
+<input type="hidden" id="appointmentId" value="">
