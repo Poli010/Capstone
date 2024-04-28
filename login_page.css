@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-    height: 500px;
+    height: 520px;
     width: 800px;
     background: #fff;
     border-radius: 10px;
@@ -246,7 +246,7 @@ form {
     left: 50%;
     background: rgb(82, 72, 72);
     width: 400px;
-    height: 500px;
+    height: 520px;
     transition: transform 0.5s ease-in-out, background 0.5s ease-in-out;
     z-index: 100;
 }

@@ -360,30 +360,30 @@ window.onload = function() {
 };
 
 
-    document.addEventListener("DOMContentLoaded", function() {
-        var ipapagawa1 = document.getElementById("ipapagawa");
-        var ipapagawa2 = document.getElementById("ipapagawa2");
-        var othersInput = document.querySelector(".others");
+document.addEventListener("DOMContentLoaded", function() {
+    var ipapagawa1 = document.getElementById("ipapagawa");
+    var ipapagawa2 = document.getElementById("ipapagawa2");
+    var othersInput = document.querySelector(".others");
 
-        ipapagawa1.addEventListener("change", function() {
-            if (this.value === "Others") {
-                othersInput.style.display = "block";
-                ipapagawa1.style.display = "none";
-                
-            } else {
-                othersInput.style.display = "none";
-                ipapagawa1.style.display = "block";
-            }
-        });
+    ipapagawa1.addEventListener("change", function() {
+        if (this.value === "Others") {
+            othersInput.style.display = "block";
+            ipapagawa1.style.display = "none";
+            
+        } else {
+            othersInput.style.display = "none";
+            ipapagawa1.style.display = "block";
+        }
+    });
 
-        ipapagawa2.addEventListener("change", function() {
-            if (this.value === "Others") {
-                othersInput.style.display = "block";
-                ipapagawa2.style.display = "none";
-            } else {
-                othersInput.style.display = "none";
-                ipapagawa2.style.display = "block";
-            }
-        });
+    ipapagawa2.addEventListener("change", function() {
+        if (this.value === "Others") {
+            othersInput.style.display = "block";
+            ipapagawa2.style.display = "none";
+        } else {
+            othersInput.style.display = "none";
+            ipapagawa2.style.display = "block";
+        }
+    });
     });
 
