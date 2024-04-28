@@ -73,7 +73,7 @@ $query = mysqli_query($conn, $sql);
 </body>
 </html>
 
-<!-- Hidden fields to store data temporarily -->
+
 <input type="hidden" id="type_of_service" value="">
 <input type="hidden" id="endUser_email" value="">
 <input type="hidden" id="endUser_name" value="">

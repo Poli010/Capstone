@@ -36,13 +36,12 @@
 <div class="container">
         <div class="sidebar">
        
-        <a href="#"><i class="fas fa-user-circle" title="Profile"></i></a>
-        <a href="appointment_list.php?email=<?php echo urlencode($email); ?>"><i class="fas fa-calendar-alt fa-lg" title="Appointment Lists"></i></a>
-    <a href="ongoing_appointment.php?email=<?php echo urlencode($email); ?>"><i class="fas fa-clock fa-lg" title="Ongoing Appointments"></i></a>
+            <a href="#"><i class="fas fa-user-circle" title="Profile"></i></a>
+            <a href="appointment_list.php?email=<?php echo urlencode($email); ?>"><i class="fas fa-calendar-alt fa-lg" title="Appointment Lists"></i></a>
+            <a href="ongoing_appointment.php?email=<?php echo urlencode($email); ?>"><i class="fas fa-clock fa-lg" title="Ongoing Appointments"></i></a>
             <a href="complete_transactions.php?email=<?php echo urlencode($email); ?>"><i class="fas fa-check-circle"title="Successful Transactions"></i></a>
-            <a href="#"><i class="fas fa-comments" title="Feedbacks"></i></a>
             <a href="edit_technician.php?user_id=<?php echo $user_id; ?>"><i class="fas fa-cog" title="Account Settings"></i></a>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"title="Logout"></i></a>
+            <a href="login_page.php"><i class="fas fa-sign-out-alt"title="Logout"></i></a>
         </div>
         <div class="main-content">
             <h1>Technician Account</h1>
