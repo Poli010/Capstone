@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="pending_appointments.css">
+    <link rel="stylesheet" href="Successful_transaction.css">
     <title>Pending Appointments</title>
 </head>
 <body>
@@ -29,7 +29,7 @@
                 <li class="nav-item"><a class="nav-link" href="pending_applicants.php" style="color: white;">Pending Applicants</a></li>
                 <li class="nav-item"><a class="nav-link" href="pending_appointments.php" style="color: white;">Pending Appointments</a></a></li>
                 <li class="nav-item"><a class="nav-link" href="Successful_transaction.php" style="color: white;">Successful Transactions</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" style="color: white;">Logout</a></li>
+                <li class="nav-item"><a class="nav-link" href="login_page.php" style="color: white;">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -40,7 +40,6 @@
                 <th>Client Name:</th>
                 <th>Email:</th>
                 <th>Type of service:</th>
-                
                 <th>Cost of Repair</th>
                 <th>Service</th>
                 <th>Technician email:</th>
@@ -52,7 +51,7 @@
                 while($row = mysqli_fetch_assoc($query)){
             ?>
             <tr>
-                <td><?php echo $row['endUser_name'] ?> <?php echo $row['endUser_name'] ?></td>
+                <td> <?php echo $row['endUser_name'] ?></td>
                 <td><?php echo $row['endUser_email'] ?></td>
                 <td><?php echo $row['type_of_service'] ?></td>
                 <td class="email"><?php echo $row['cost_of_repair'] ?></td>
