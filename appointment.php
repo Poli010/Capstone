@@ -82,7 +82,7 @@
             <form action="appointment_cancelBook.php" method="post">
                 <input type="hidden" name="techa" id="techa" value="">
                 <input type="hidden" name="endUser_email" id="endUser_email" value="<?php echo $email ?>">
-                <input type="hidden" name="endUser_name" value="<?php echo $row2['endUser_name'] ?>">
+                <input type="hidden" name="endUser_name" id="endUser_name"  value="">
                 <select name="reason_cancel" id="reason_select">
                     <option value=""></option>
                     <option value="Schedule conflicts">Schedule conflicts</option>

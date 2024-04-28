@@ -46,7 +46,7 @@
             <p><?php echo date('h:i A', strtotime($row['time'])); ?> </p>
             <p id="status"><?php echo $row['status'] ?></p>
             <p><?php echo $row['type_of_service'] ?></p>
-            <button class="action_btn" onclick="show('message_collapse_<?php echo $row['id']; ?>','icon_<?php echo $row['id']; ?>','<?php echo $row['technician_email'] ?>','<?php echo $email ?>','<?php echo $row ['transaction_number']?>')"><i id="icon_<?php echo $row['id']; ?>" class="fa-solid fa-arrow-down"></i></button>
+            <button class="action_btn" onclick="show('message_collapse_<?php echo $row['id']; ?>','icon_<?php echo $row['id']; ?>','<?php echo $row['technician_email'] ?>','<?php echo $email ?>','<?php echo $row['transaction_number'] ?>')"><i id="icon_<?php echo $row['id']; ?>" class="fa-solid fa-arrow-down"></i></button>
         </div>
         <div class="message" id="message_collapse_<?php echo $row['id']; ?>">
             <p><?php echo $row['technician_message'] ?> <?php echo $row['service'] ?></p>
@@ -56,11 +56,10 @@
                 <input type="hidden" id="accepted" value="accepted">
                 <p><i class="fa-solid fa-phone"></i> +63<?php echo $row['end_user_contact'] ?></p>
                 <p><i class="fa-solid fa-envelope"></i> <?php echo $row['endUser_email'] ?></p>
-                <button class="seeLocation" onclick="seeLocation()">See Location <i class="fa-solid fa-location-dot"></i></button>
-                            <input type="hidden" id="technician_location" value="<?php echo $row['endUser_address']?>">
+                <button class="seeLocation" onclick="seeLocation('<?php echo $row['endUser_address']?>')">See Location <i class="fa-solid fa-location-dot"></i></button>
                 <!--<button class="chatBtn" onclick="chats('<?php echo $row['endUser_email'] ?>')">Chat</button>-->
                 <button class="acceptBtn" id="acceptBtn" onclick="accept('<?php echo $row['type_of_service']; ?>','<?php echo $row['end_user_contact']; ?>','<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')">Accept</button>
-                <button class="cancelBtn" onclick="cancelbook()">Cancel Book</button>
+                <button class="cancelBtn" onclick="cancelbook()">Declined</button>
                 <input type="hidden" id="technician_email" value="<?php echo $row['technician_email'] ?>">
             </div>
             
@@ -75,18 +74,34 @@
         <div class="modal_button">
             <button type="button" class="btnYes" onclick="delete_book()">Yes</button>
             <button class="btnNo" type="button" onclick="close_modal()">No</button>
-            <input type="text" name="techa" id="techa" value="">
+    
         </div>
     </div>
     <div class="reason" id="reason">
         <div class="reason_info">
             <h1>Reason why you cancel your book?</h1>
             <form action="appointment_List_cancel_book.php" method="post">
-                <input type="text" name="techa" id="techa" value="">
-                <input type="text" name="transaction" id="transaction" value="<?php echo $row2['transaction_number'] ?>"> 
-                <input type="hidden" name="endUser_email" id="endUser_email" value="<?php echo $email ?>">
-                <input type="text" name="endUser_name" value="<?php echo $row2['endUser_name'] ?>">
-                <textarea name="reason_cancel" id="" cols="30" rows="10"></textarea><br>
+                <input type="hidden" name="techa" id="techa" value="">
+                <input type="hidden" name="transaction" id="transaction" value=""> 
+                <input type="hidden" name="endUser_email" id="endUser_email" value="">
+                <input type="hidden" name="endUser_name" id="endUser_name" value="">
+                <input type="hidden" name="tech_name" id="tech_name" value="">
+                <select name="reason_cancel" id="reason_select">
+                    <option value=""></option>
+                    <option value="Personal Emergency">Personal Emergency</option>
+                    <option value="Health Issue">Health Issue</option>
+                    <option value="Transportation Problem">Transportation Problem</option>
+                    <option value="Overbooking">Overbooking</option>
+                    <option value="Inclement Weather">Inclement Weather</option>
+                    <option value="Communication issues">Communication issues</option>
+                    <option value="Technical Malfunction">Technical Malfunction</option>
+                    <option value="Distance Constraints">Distance Constraints</option>
+                    <option value="Personal reasons">Personal reasons</option>
+                    <option value="Rescheduling">Rescheduling</option>
+                    <option value="Others">Others</option>
+                </select>
+                <br>
+                <input type="text" name="others" id="others" placeholder="Type your reason" autocomplete="off">
                 <button type="submit" name="submit" class="cancel">Cancel Book</button>
                 <button type="button" class="close" onclick="close_reason()">Close</button>
             </form>

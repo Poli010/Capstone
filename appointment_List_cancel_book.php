@@ -10,10 +10,21 @@
     if(isset($_POST['submit'])){
         $techa = $_POST['techa'];
         $endUser_email = $_POST['endUser_email'];
-        $reason_cancel = $_POST['reason_cancel'];
         $endUser_name = $_POST['endUser_name'];
+        $transaction = $_POST['transaction'];
+        $technician_name = $_POST['tech_name'];
 
-        $delete = "DELETE FROM appointment_list WHERE technician_email = '$techa'";
+        $reason_cancel = array($_POST['reason_cancel'], $_POST['others']);
+
+        // Remove "Others" if present
+        $reason_cancel = array_filter($reason_cancel, function($value) {
+            return $value !== "Others";
+        });
+
+        // Implode the remaining values
+        $reason = implode($reason_cancel);
+
+        $delete = "DELETE FROM appointment_list WHERE transaction_number = '$transaction'";
         $delete_query = mysqli_query($conn, $delete);
 
         if($delete_query){
@@ -31,10 +42,10 @@
             $mail->addAddress($_POST['endUser_email']);
             $mail->isHTML(true);
             $mail->Subject = "Hi! this is E-Locator";
-            $mail->Body = "Your appointment with " . ucwords($techa) . " has been cancel <br> The reason is:<strong>  $reason_cancel  </strong>";
+            $mail->Body = "Your appointment with " . ucwords($technician_name) . " has been cancel <br> The reason is:<strong>  $reason  </strong>";
             
             $mail->send();
-            header("Location: appointment.php?email=$endUser_email");
+            header("Location: appointment_list.php?email=$techa");
         }
 
     }

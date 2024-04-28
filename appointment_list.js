@@ -1,27 +1,30 @@
 //FUNCTION FOR ARROW 
-function show(id, iconId,technician_email,email,transaction_number){
+function show(id, iconId,technician_email,email, transaction_number){
     let message_collapse = document.getElementById(id);
     let icon = document.getElementById(iconId);
     let techa = document.getElementById("techa");
     let transaction = document.getElementById("transaction");
     let endUser_email = document.getElementById("endUser_email");
+    let endUser_name = document.getElementById("endUser_name");
+    let tech_name = document.getElementById("tech_name");
 
     message_collapse.classList.toggle('message-open');
     icon.classList.toggle('fa-solid-open');
     $.ajax({
-        url: "delete_appointment.php",
+        url: "delete_appointment_list.php",
         type: "GET",
         dataType: "json",
         data:{
             technician_email: technician_email,
-            email: email, 
+            email: email,
             transaction_number: transaction_number
         },
         success: function(response){
             techa.value = response.data.technician_email;
             transaction.value = response.data.transaction_number;
             endUser_email.value = response.data.endUser_email;
-           
+            endUser_name.value = response.data.endUser_name;
+            tech_name.value = response.data.technician_name;
         }
     })
 }
@@ -98,15 +101,30 @@ function hideAcceptButton() {
 hideAcceptButton();
 
 //FUNCTION FOR SEE THE LOCATION OF TECHNICIAN
-function seeLocation(){
-    let technician_location = document.getElementById("technician_location").value;
+function seeLocation(address){
+    //let technician_location = document.getElementById("technician_location").value;
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
             let currentLatitude = position.coords.latitude;
             let currentLongitude = position.coords.longitude;
-            let googleMapsUrl = "https://www.google.com/maps/dir/?api=1&origin=" + currentLatitude + "," + currentLongitude + "&destination=" + encodeURIComponent(technician_location);
+            let googleMapsUrl = "https://www.google.com/maps/dir/?api=1&origin=" + currentLatitude + "," + currentLongitude + "&destination=" + encodeURIComponent(address);
 
             window.open(googleMapsUrl, "_blank");
         });
     }
 }
+
+window.onload = function(){
+    let reason_select = document.getElementById("reason_select");
+    let others = document.getElementById("others");
+
+    reason_select.addEventListener("change", function(){
+        if(reason_select.value === "Others"){
+            reason_select.style.display = "none";
+            others.style.display = "block";
+        }
+        else{
+            others.style.display="none";
+        }
+    });
+};
