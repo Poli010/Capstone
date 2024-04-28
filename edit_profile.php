@@ -24,7 +24,7 @@
             <img src="icon/icon.png" alt="" width="120" onclick="back('<?php echo $email ?>')">
         </div>
         <form action="editProfile_function.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="user_id" value="<?php echo $user_id ?>">
+            <input type="hidden" name="email" value="<?php echo $email ?>">
             <h1>Edit Profile</h1>
             <div class="info">
                 <div class="edit-profile">
