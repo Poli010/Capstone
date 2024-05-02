@@ -140,3 +140,24 @@ function closeConfirmModal() {
     var modal = document.getElementById("confirmModal");
     modal.style.display = "none";
 }
+
+var currentDate = new Date();
+
+  // Format the date as YYYY-MM-DD
+  var formattedDate = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1).toString().padStart(2, '0') + '-' + currentDate.getDate().toString().padStart(2, '0');
+
+  // Set the value of the input field to the current date
+  document.getElementById('date_today').value = formattedDate;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    let accept = document.getElementById("accept");
+    let date_today = document.getElementById("date_today").value;
+    let apppoint_date = document.getElementById("apppoint_date").value;
+
+    if(date_today !== apppoint_date){
+        accept.style.display = "none";
+    }
+    else{
+        accept.style.display = "block";
+    }
+  });

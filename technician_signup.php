@@ -82,7 +82,7 @@ if(isset($_POST['submit'])){
         $query = mysqli_query($conn, $signup);
 
         if($query){
-            $accounts = "INSERT INTO accounts VALUES ('','$technician','$firstname','$lastname','$email','$username','$contact_number','$password','$verification','','$user_id','','$profile_img')";
+            $accounts = "INSERT INTO accounts VALUES ('','$technician','$firstname','$lastname','$email','$username','','$contact_number','$password','$verification','','$user_id','','$profile_img')";
             $query2 = mysqli_query($conn, $accounts);
 
             header("Location: verification_page.php?email=$email");

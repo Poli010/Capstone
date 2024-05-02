@@ -19,7 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_query($conn, $sqlInsert)) {
         $sqlDelete = "DELETE FROM ongoing_appointment WHERE id = '$appointmentId'";
         if (mysqli_query($conn, $sqlDelete)) {
-            $sqlComment = "INSERT INTO able_comment (endUser_email, technician_email, status) VALUES ('$endUserEmail', '$technicianEmail', '1')";
+            $sql = "DELETE FROM appointment_list WHERE id = '$appointmentId'";
+            if(mysqli_query($conn, $sql)){
+                $sqlComment = "INSERT INTO able_comment (endUser_email, technician_email, status) VALUES ('$endUserEmail', '$technicianEmail', '1')";
             if (mysqli_query($conn, $sqlComment)) {
                 echo "Transaction completed successfully.";
             } else {
@@ -28,7 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Error deleting appointment: " . mysqli_error($conn);
         }
-    } else {
+    } 
+    }else {
         echo "Error inserting transaction data: " . mysqli_error($conn);
     }
 } else {

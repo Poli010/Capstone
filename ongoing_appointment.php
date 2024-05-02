@@ -44,8 +44,10 @@ $query = mysqli_query($conn, $sql);
                 <p><i class="fa-solid fa-envelope"></i> <?php echo $row['endUser_email'] ?></p>
                 <p><i class="fa-solid fa-phone"></i> +63<?php echo $row['endUser_contact'] ?></p>
                 <input type="number" id="priceInput" name="price" placeholder="Enter price" style="display: none;" required>
-                <button class="acceptBtn" onclick="accept('<?php echo $row['type_of_service']; ?>','<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')">Complete</button>
+                <button class="acceptBtn"id="accept" onclick="accept('<?php echo $row['type_of_service']; ?>','<?php echo $row['endUser_email']; ?>', '<?php echo $row['endUser_name']; ?>', '<?php echo $row['technician_email']; ?>', '<?php echo $row['date']; ?>', '<?php echo $row['time']; ?>', '<?php echo $row['id']; ?>')">Complete</button>
                 <input type="hidden" id="technician_email" value="<?php echo $row['technician_email'] ?>">
+                <input type="hidden" id="date_today" value="">
+                <input type="hidden" id="apppoint_date" value="<?php echo $row['date']?>">
             </div>
         </div>
         <hr>
@@ -57,7 +59,7 @@ $query = mysqli_query($conn, $sql);
 <div id="confirmModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeConfirmModal()">&times;</span>
-        <p id="confirmModalMessage">Are you sure that you input the right amount?</p>
+        <p id="confirmModalMessage">Please input your transaction amount?</p>
         <input type="text" id="confirmAmountInput" placeholder="Enter amount" required>
         <button id="confirmOkBtn" onclick="completeTransaction()">OK</button>
     </div>
@@ -65,7 +67,7 @@ $query = mysqli_query($conn, $sql);
 <div id="priceModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closePriceModal()">&times;</span>
-        <p>Please input the price before completing this transaction.</p>
+        <p>Please input your transaction amount?</p>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
